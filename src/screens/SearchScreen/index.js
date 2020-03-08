@@ -4,15 +4,16 @@ import HomeHeader from '../../components/HomeHeader'
 import styles from './styles';
 import colors from '../../assets/colors';
 import Icon from 'react-native-vector-icons/Ionicons';
+import {connect} from 'react-redux';
 
 class SearchScreen extends React.Component {
 
     state = {
-      searchTag: '',
+      // searchTag: '',
     }
 
-  onChangeText(){
-
+  onChangeText(text){
+      this.props.searchUpdate(text)
   }
 
    renderSearch(){
@@ -23,7 +24,7 @@ class SearchScreen extends React.Component {
         <TextInput
             style={styles.searchbar}
             onChangeText={text => this.onChangeText(text)}
-            value={this.state.searchTag}
+            value={this.props.search}
             placeholder='Search for a drug or condition'
         />
         </View>
@@ -41,4 +42,12 @@ class SearchScreen extends React.Component {
     }
 }
 
-export default SearchScreen;
+const mapStateToProps = state => ({
+  search: state.search,
+});
+
+const mapDispatchToProps = dispatch => ({
+  searchUpdate: val => dispatch({type: 'UPDATE', search: val}),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(SearchScreen);

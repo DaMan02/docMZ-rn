@@ -5,6 +5,7 @@ import Icon from 'react-native-vector-icons/Ionicons';
 import HomeScreen from './screens/HomeScreen';
 import SearchScreen from './screens/SearchScreen';
 import SettingsScreen from './screens/SettingsScreen';
+import SearchResult from './screens/SearchResult';
 import colors from './assets/colors';
 
 const Tab = createMaterialBottomTabNavigator();
@@ -36,7 +37,7 @@ class App extends React.Component {
         >
           <Tab.Screen name="Search" component={SearchScreen} />
           <Tab.Screen name="Home" component={HomeScreen} />
-          <Tab.Screen name="Settings" component={SettingsScreen} />
+          <Tab.Screen name="Settings" component={SettingsScreen} />          
         </Tab.Navigator>
       </NavigationContainer>
     );
