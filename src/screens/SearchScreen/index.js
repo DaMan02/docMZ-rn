@@ -8,10 +8,6 @@ import {connect} from 'react-redux';
 
 class SearchScreen extends React.Component {
 
-    state = {
-      // searchTag: '',
-    }
-
   onChangeText(text){
       this.props.searchUpdate(text)
   }

@@ -4,7 +4,10 @@ import HeaderSearch from '../../components/HeaderSearch'
 import { TabView, TabBar, TabViewPage, TabBarTop } from 'react-native-tab-view';
 import styles from './styles';
 import Prices from '../searchTabs/Prices'
+import Info from '../searchTabs/Info'
 import { FAB } from 'react-native-paper';
+import Tips from '../searchTabs/Tips';
+import News from '../searchTabs/News';
 
 class SearchResult extends React.Component {
 
@@ -38,11 +41,13 @@ class SearchResult extends React.Component {
     _renderScene = ({ route }) => {
         switch (route.key) {
             case 1:
-                return <Prices />;
+                return <Prices/>;
             case 2:
-                return <View style={{ flex: 1, backgroundColor: '#673ab7' }} />;
+                return <Tips/>;
             case 3:
-                return <View style={{ flex: 1, backgroundColor: '#673ab7' }} />;
+                return <News />;
+            case 4: 
+                return <Info/>;
             default:
                 return null;
         }

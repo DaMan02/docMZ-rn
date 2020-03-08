@@ -1,14 +1,12 @@
 import React from 'react';
 import { View, Text, StyleSheet, StatusBar, TouchableOpacity} from 'react-native';
 import colors from "../../assets/colors";
-import Icon from 'react-native-vector-icons/Ionicons';
 import CouponCard from '../../components/CouponCard'
 
 class Prices extends React.Component{
    render(){
        return(
            <View style={styles.title}>
-                <StatusBar backgroundColor={colors.text3} barStyle="dark-content" />
                   <Text style={styles.textnormal}>Lowest Prices near New Delhi, India</Text>
                    <CouponCard title='Walgreens' loc={39} miles={0.6} price={125.59}/>
                    <CouponCard title='Community, a Walgreens Pharmacy' loc={1} miles={2.5} price={125.59}/> 

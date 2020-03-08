@@ -10,15 +10,6 @@ import {connect} from 'react-redux';
 
 class SettingsScreen extends React.Component {
 
-    state = {
-        // toggle1: false
-    }
-  
-    onSwitchToggle(code){
-        this.setState({ toggle1: !this.state.toggle1 });
-        ToastAndroid.show("Todo", ToastAndroid.SHORT);
-    }
-
     render(){
         return(
             <View style={styles.container}>
