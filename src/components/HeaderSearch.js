@@ -30,8 +30,7 @@ const styles = StyleSheet.create({
     title: {
         flexDirection: 'row',
         backgroundColor: colors.text3,
-        // height: 60
-        marginBottom: -2
+        height: 60
     },
     text: {
         fontSize: 16,

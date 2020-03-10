@@ -46,7 +46,6 @@ const styles = StyleSheet.create({
         paddingBottom: 4,
         paddingStart: 8,
         height: 60,
-        alignSelf: 'center',
         margin: 10
     }
     

@@ -1,7 +1,7 @@
 import React from 'react';
-import {StyleSheet, Text, View, Image, Switch} from "react-native";
+import {StyleSheet, Text, View} from "react-native";
 import colors from "../assets/colors";
-// import { Switch } from 'react-native-paper';
+import { Switch } from 'react-native-paper';
 import Icon from 'react-native-vector-icons/Ionicons';
 
 // props: text, value, icon, onSwitch()

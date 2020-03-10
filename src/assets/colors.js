@@ -1,6 +1,6 @@
 
 // theme 1
-///*
+/*
 export default {   
     primary2: '#3A69CA',
     primary1: '#F5861B',
@@ -13,7 +13,7 @@ export default {
     shadow: '#d3d1d0',
     red: '#FA2B4D'
 };  
-//*/
+*/
 
 // theme 2
 /*
@@ -32,8 +32,9 @@ export default {
 };
 */
 
+
 // theme 3
-/*
+///*
 export default {   
     primary1: '#0B59BF',
     primary2: '#63A1F2',
@@ -46,4 +47,4 @@ export default {
     shadow: '#d3d1d0',
     red: '#FA2B4D'
 };
-*/
+//*/

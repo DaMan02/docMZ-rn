@@ -5,6 +5,7 @@ const initialState = {
     toggle4: false,
     toggle5: false,
     search: '',
+    load: false,
   };
 
 const reducer = (state = initialState, action) => {
@@ -38,8 +39,13 @@ const reducer = (state = initialState, action) => {
             return {
               ...state,
               search: action.search,
-              load: true,
+              load: true
             };
+        case 'LOAD':
+              return {
+                ...state,
+                load: action.load
+              };         
       default:
         return state;
     }
