@@ -3,6 +3,7 @@ import {StyleSheet, Text, View} from "react-native";
 import colors from "../assets/colors";
 import { Switch } from 'react-native-paper';
 import Icon from 'react-native-vector-icons/Ionicons';
+import fonts from '../assets/fonts';
 
 // props: text, value, icon, onSwitch()
 
@@ -40,10 +41,8 @@ const styles = StyleSheet.create({
         marginEnd: 10
     },
     text: {
+        ...fonts.h3,
         marginStart: 10,
-        color: colors.text4,
-        fontFamily: 'Roboto',
-        fontSize: 16
     }
 });
 

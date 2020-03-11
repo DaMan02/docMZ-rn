@@ -3,6 +3,7 @@ import { View, Text, StyleSheet, StatusBar, TouchableOpacity, ToastAndroid} from
 import colors from "../../assets/colors";
 import InfoList from '../../components/InfoList';
 import { ScrollView } from 'react-native-gesture-handler';
+import fonts from '../../assets/fonts';
 
 class Info extends React.Component{
 
@@ -36,9 +37,7 @@ const styles = StyleSheet.create({
        backgroundColor: colors.neutral
    },
    title: {
-       color: colors.primary1,
-       fontWeight: 'bold',
-       fontSize: 16,
+       ...fonts.h2,
        paddingStart: 10,
        paddingTop: 4,
        paddingBottom: 4

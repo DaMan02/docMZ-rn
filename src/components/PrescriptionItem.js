@@ -3,6 +3,7 @@ import {StyleSheet, Text, Image, View, TouchableOpacity} from "react-native";
 import colors from "../assets/colors";
 import Icon from 'react-native-vector-icons/Ionicons';
 import OutlineButton from './OutlineButton'
+import fonts from '../assets/fonts';
 
 // props: name, mg, tablets
 
@@ -59,9 +60,8 @@ const styles = StyleSheet.create({
         marginBottom: 10 
     },
     boldText: {
-        fontWeight: 'bold',
+        ...fonts.header,
         color: colors.typography,
-        fontSize: 20
     },
     smallText: {
         color: colors.typography

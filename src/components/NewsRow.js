@@ -3,6 +3,7 @@ import { View, Text, StyleSheet, Image } from 'react-native';
 import colors from "../assets/colors";
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import Icon from 'react-native-vector-icons/Ionicons';
+import fonts from '../assets/fonts';
 
 // props: title, subtitle, onPress
 
@@ -28,9 +29,8 @@ const styles = StyleSheet.create({
         alignItems: 'center'
     },
     text: {
-        fontSize: 16,
+        ...fonts.h2,
         padding: 2,
-        color: colors.text4,
     },
     icon: {
         right: 14,

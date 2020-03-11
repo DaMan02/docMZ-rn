@@ -2,6 +2,7 @@ import React from 'react';
 import { View, Text, StyleSheet, StatusBar, TouchableOpacity} from 'react-native';
 import colors from "../assets/colors";
 import Icon from 'react-native-vector-icons/Ionicons';
+import fonts from "../assets/fonts";
 
 class HeaderSearch extends React.Component{
    render(){
@@ -12,8 +13,8 @@ class HeaderSearch extends React.Component{
                     <Icon name='md-arrow-back' size={19} color='black' />
                    </TouchableOpacity>
                 <View style={styles.textMain}>
-                <Text style={styles.texttitle}>atorvastanin</Text>
-                <Text style={styles.text}>40 mg, 90 tablets</Text>
+                <Text style={fonts.h2}>atorvastanin</Text>
+                <Text style={fonts.h3}>40 mg, 90 tablets</Text>
                 </View>
                 <TouchableOpacity style={styles.edit}>
                     <Icon name='md-create' size={19} color='black' />
@@ -31,13 +32,6 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         backgroundColor: colors.text3,
         height: 60
-    },
-    text: {
-        fontSize: 16,
-    },
-    texttitle: {
-        fontSize: 16,
-        fontWeight: 'bold'
     },
     textMain: {
         padding: 10

@@ -1,5 +1,6 @@
 import {StyleSheet} from 'react-native';
 import colors from '../../assets/colors';
+import fonts from '../../assets/fonts';
 
 export default StyleSheet.create({
   container: {
@@ -7,12 +8,9 @@ export default StyleSheet.create({
       backgroundColor: colors.neutral,
   },
   boldtext: {
+      ...fonts.large,
       padding: 12,
       alignSelf: 'center',
-      fontSize: 18,
-      fontWeight: 'bold',
-      fontFamily: 'Roboto',
-      color: colors.text4,
       backgroundColor: 'white'
  },
  buttonContainer: {

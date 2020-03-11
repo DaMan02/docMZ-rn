@@ -2,6 +2,7 @@ import React from 'react';
 import {StyleSheet, Text, TouchableOpacity, View} from "react-native";
 import colors from '../assets/colors';
 import Icon from 'react-native-vector-icons/Ionicons';
+import fonts from '../assets/fonts';
 
 // props: title
 
@@ -23,11 +24,9 @@ const styles = StyleSheet.create({
         right: 18
     },
     text: {
-        fontSize: 16,
-        fontFamily: 'Roboto',
+        ...fonts.h2,
         padding: 12,
         marginStart: 8,
-        color: colors.text4
     },
 });
 

@@ -1,5 +1,6 @@
 import { StyleSheet } from 'react-native';
 import colors from '../../assets/colors';
+import fonts from '../../assets/fonts';
 
 export default StyleSheet.create({
   container: {
@@ -45,10 +46,8 @@ export default StyleSheet.create({
     borderRadius: 2
   },
   listItems: {
+    ...fonts.h3_thin,
     flex: 1,
     padding: 10,
-    fontSize: 16,
-    fontFamily: 'sans-serif-light',
-    color: 'black',
   },
 });

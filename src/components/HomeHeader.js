@@ -1,6 +1,7 @@
 import React from 'react';
 import { View, Text, StyleSheet, StatusBar} from 'react-native';
 import colors from "../assets/colors";
+import fonts from '../assets/fonts';
 
 class HomeHeader extends React.Component{
    render(){
@@ -8,8 +9,8 @@ class HomeHeader extends React.Component{
            <View style={styles.title}>
                 <StatusBar backgroundColor={colors.text3} barStyle="dark-content" />
                 <Text style={styles.textMain}>
-                <Text style={{...styles.text, color: colors.primary1}}>doc</Text>
-                <Text style={{...styles.text, color: colors.primary2}}>Mz</Text>
+                <Text style={{...fonts.header, color: colors.primary1}}>doc</Text>
+                <Text style={{...fonts.header, color: colors.primary2}}>Mz</Text>
                 </Text>
            </View>
        );
@@ -23,10 +24,6 @@ const styles = StyleSheet.create({
         borderBottomColor: colors.shadow,
         borderBottomWidth: 1.5,
         height: 60
-    },
-    text: {
-        fontSize: 24,
-        fontWeight: 'bold',
     },
     textMain: {
         padding: 10

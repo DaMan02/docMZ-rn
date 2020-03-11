@@ -1,6 +1,7 @@
 import React from 'react';
 import {StyleSheet, Text, TouchableOpacity, View} from "react-native";
 import colors from '../assets/colors';
+import fonts from "../assets/fonts";
 
 // props: title, loc, price, miles
 
@@ -12,7 +13,7 @@ const CouponCard = (props) => (
       </View>
       <TouchableOpacity activeOpacity={0.6} style={styles.coupon} onPress={props.onPress}>
            <Text style={{...styles.sub, alignSelf: 'center'}}>Coupon</Text>
-           <Text style={styles.title}>$ {props.price}</Text>
+           <Text style={fonts.large}>$ {props.price}</Text>
       </TouchableOpacity>
     </View>
 );
@@ -25,10 +26,6 @@ const styles = StyleSheet.create({
         marginTop: 4,
         borderBottomColor: colors.shadow,
         borderBottomWidth: 0.6
-    },
-    title: {
-        fontWeight: 'bold',
-        fontSize: 18,
     },
     sub: {
         color: colors.text2
@@ -47,8 +44,7 @@ const styles = StyleSheet.create({
         paddingStart: 8,
         height: 60,
         margin: 10
-    }
-    
+    }    
 });
 
 export default CouponCard;

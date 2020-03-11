@@ -11,7 +11,13 @@ export default {
     text3: '#7A8499',
     text4: '#545A66',
     shadow: '#d3d1d0',
-    red: '#FA2B4D'
+    red: '#FA2B4D',
+     // fonts
+    large: '#2d2d32',
+    h1: '#2d2d32',
+    h2: '#34495E',
+    h3: '#34495E',
+    para: '#34495E'
 };  
 */
 
@@ -27,7 +33,13 @@ export default {
     text3: '#99badd',
     text4: '#002649' ,
     shadow: '#d3d1d0',
-    red: '#FA2B4D'
+    red: '#FA2B4D',
+     // fonts
+    large: '#2d2d32',
+    h1: '#2d2d32',
+    h2: '#34495E',
+    h3: '#34495E',
+    para: '#34495E'
 
 };
 */
@@ -45,6 +57,12 @@ export default {
     text3: '#accaf2',
     text1: '#f26363',
     shadow: '#d3d1d0',
-    red: '#FA2B4D'
+    red: '#FA2B4D',
+     // fonts
+    large: '#2d2d32',
+    h1: '#2d2d32',
+    h2: '#34495E',
+    h3: '#34495E',
+    para: '#34495E'
 };
 //*/

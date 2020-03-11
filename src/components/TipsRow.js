@@ -1,6 +1,7 @@
 import React from 'react';
 import { View, Text, StyleSheet, Image } from 'react-native';
 import colors from "../assets/colors";
+import fonts from '../assets/fonts';
 
 // props: title, subtitle
 
@@ -33,13 +34,11 @@ const styles = StyleSheet.create({
         marginEnd: 10
     },
     text: {
-        fontSize: 16,
+        ...fonts.h2,
         padding: 2,
-        color: colors.text4,
-        fontWeight: 'bold'
     },
     sub: {
-        fontSize: 16, 
+        ...fonts.h3, 
         color: 'gray'
     },
     container: {

@@ -1,6 +1,7 @@
 import React from 'react';
 import { View, Text, StyleSheet, Image} from 'react-native';
 import colors from "../assets/colors";
+import fonts from "../assets/fonts";
 
 class Ad extends React.Component{
    render(){
@@ -38,9 +39,8 @@ const styles = StyleSheet.create({
         marginEnd: 10
     },
     text: {
-        fontSize: 18,
+        ...fonts.h3,
         padding: 10,
-        color: colors.text4,
     },
     container: {
         flex: 1

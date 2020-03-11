@@ -1,6 +1,7 @@
 import React from 'react';
 import {StyleSheet, Text, TouchableOpacity, View} from "react-native";
 import colors from "../assets/colors";
+import fonts from '../assets/fonts';
 
 // props: text
 
@@ -31,9 +32,7 @@ const styles = StyleSheet.create({
         borderWidth: 1      
     },
     buttonTextStyle: {
-        fontSize: 20,
-        fontFamily:'Roboto',
-        fontWeight: 'bold',
+        ...fonts.header,
         color: colors.typography,        
     }
 });

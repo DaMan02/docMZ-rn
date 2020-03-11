@@ -2,6 +2,7 @@ import React from 'react';
 import { View, Text, StyleSheet, StatusBar, TouchableOpacity} from 'react-native';
 import colors from "../../assets/colors";
 import CouponCard from '../../components/CouponCard'
+import fonts from '../../assets/fonts';
 
 class Prices extends React.Component{
    render(){
@@ -24,34 +25,8 @@ const styles = StyleSheet.create({
         backgroundColor: colors.neutral,
         height: 60
     },
-    text: {
-        fontSize: 16,
-    },
-    texttitle: {
-        fontSize: 16,
-        fontWeight: 'bold'
-    },
-    textMain: {
-        padding: 10
-    },
-    arrow: {
-      alignSelf: 'center',
-      paddingStart: 20,
-      paddingEnd: 20  
-    },
-    edit: {
-        alignSelf: 'center',
-        paddingStart: 20,
-        paddingEnd: 20,
-        marginStart: 60
-    },
-    search: {
-        alignSelf: 'center',
-        paddingStart: 10,
-        paddingEnd: 20   
-    },
     textnormal: {
-        color: 'black',
+        ...fonts.h3,
         paddingTop: 6,
         paddingBottom: 6,
         paddingStart: 12,
@@ -60,7 +35,7 @@ const styles = StyleSheet.create({
         borderBottomWidth: 0.4
     },
     more: {
-        fontSize: 15,
+        ...fonts.h4,
         color: colors.primary1
     },
     moreContainer: {
