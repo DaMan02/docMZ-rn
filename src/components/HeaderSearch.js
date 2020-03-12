@@ -8,7 +8,7 @@ class HeaderSearch extends React.Component{
    render(){
        return(
            <View style={styles.title}>
-                <StatusBar backgroundColor={colors.text3} barStyle="dark-content" />
+                <StatusBar backgroundColor={colors.primary1} barStyle="light-content" />
                    <TouchableOpacity style={styles.arrow}>
                     <Icon name='md-arrow-back' size={19} color='black' />
                    </TouchableOpacity>

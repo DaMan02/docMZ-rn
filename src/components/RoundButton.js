@@ -2,13 +2,13 @@ import React from 'react';
 import {StyleSheet, Text, TouchableOpacity, View} from "react-native";
 import fonts from '../assets/fonts';
 
-// props: backgroundColor, text, textColor, border, radius, onPress
+// props: backgroundColor, text, textColor
 
-const NormalButton = (props) => (
+const RoundButton = (props) => (
     <View  
-    style={{...props.buttonStyle, alignItems:'center', justifyContent:'center'  }}>
+    style={styles.main}>
     <TouchableOpacity activeOpacity={0.6} onPress={props.onPress}
-    style={{...styles.buttonContainer, backgroundColor:props.backgroundColor, borderColor: props.border, borderRadius: props.radius, borderWidth: 1 }} >
+    style={{...styles.buttonContainer, backgroundColor:props.backgroundColor }} >
         <View >
             <Text style={{...fonts.h1, color: props.textColor}}>{props.text}</Text>
         </View>
@@ -24,12 +24,10 @@ const styles = StyleSheet.create({
     buttonContainer: {
         justifyContent:'center',
         alignItems:'center',
-        width: 130,
-        height: 44,   
-        borderRadius: 2 ,
-        elevation: 4,
-        padding: 2
+        width: 140,
+        height: 46,  
+        borderRadius: 40
     },
 });
 
-export default NormalButton;
+export default RoundButton;

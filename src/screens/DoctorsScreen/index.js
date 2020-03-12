@@ -18,7 +18,6 @@ import colors from '../../assets/colors';
 import fonts from '../../assets/fonts';
 import styles from './styles';
 import NormalButton from '../../components/NormalButton';
-import OutlineButton from '../../components/OutlineButton';
 
 class DoctorsScreen extends Component {
   state = {
