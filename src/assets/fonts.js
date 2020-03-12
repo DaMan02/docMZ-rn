@@ -40,6 +40,12 @@ export default StyleSheet.create({
     color: colors.para,
     fontFamily: 'Roboto',
   },
+
+  para_thin: {
+    fontSize: 14,
+    color: 'black',
+    fontFamily: 'sans-serif-light',
+  },
   h3_thin: {
     fontSize: 16,
     color: 'black',

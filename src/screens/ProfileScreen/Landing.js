@@ -23,7 +23,7 @@ class Landing extends React.Component {
                         border={colors.primary1}
                         textColor='white'
                         radius={40}
-                        
+                        onPress={() => this.props.navigation.navigate('Login')}
                     />
                     <Text style={styles.or}>OR</Text>
                     <NormalButton
