@@ -3,29 +3,38 @@ import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import colors from '../assets/colors';
 import fonts from '../assets/fonts';
 import { Chip } from 'react-native-paper';
+import {connect} from 'react-redux';
 import {
     widthPercentageToDP as wp,
     heightPercentageToDP as hp,
 } from 'react-native-responsive-screen';
 
-// props: onPress
+class ChipGroup extends React.Component {
 
-const ChipGroup = (props) => (
-    <View style={styles.master}>
-        <Chip
-            selected={props.selected1}
-            mode={props.selected1? 'flat' : 'outlined'}
-            icon='stethoscope'
-            style={styles.chip}
-            onPress={props.onPress1}>Doctor</Chip>
-        <Chip
-            selected={props.selected2}
-            mode={props.selected2? 'flat' : 'outlined'}
-            icon='hospital'
-            style={styles.chip}
-            onPress={props.onPress2}>Patient</Chip>
-    </View>
-);
+    chipToggle(isDoc){
+        if(isDoc !== this.props.isDoctor)
+        this.props.isDoctorUpdate()
+    }
+
+    render() {
+        return (
+            <View style={styles.master}>
+                <Chip
+                    selected={this.props.isDoctor}
+                    mode={this.props.isDoctor ? 'flat' : 'outlined'}
+                    icon='stethoscope'
+                    style={styles.chip}
+                    onPress={() => this.chipToggle(true)}>Doctor</Chip>
+                <Chip
+                    selected={!this.props.isDoctor}
+                    mode={!this.props.isDoctor ? 'flat' : 'outlined'}
+                    icon='hospital'
+                    style={styles.chip}
+                    onPress={() => this.chipToggle(false)}>Patient</Chip>
+            </View>
+        );
+    }
+}
 
 const styles = StyleSheet.create({
     master: {
@@ -41,4 +50,12 @@ const styles = StyleSheet.create({
     }
 });
 
-export default ChipGroup;
+const mapStateToProps = state => ({
+    isDoctor: state.isDoctor
+  });
+  
+  const mapDispatchToProps = dispatch => ({
+    isDoctorUpdate:() => dispatch({ type: 'TOGGLE_DOCTOR' }),
+  });
+  
+ export default connect(mapStateToProps, mapDispatchToProps)(ChipGroup);

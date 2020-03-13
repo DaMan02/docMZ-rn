@@ -11,25 +11,24 @@ import { ScrollView, TouchableOpacity } from 'react-native-gesture-handler';
 import NormalButton from '../../components/NormalButton';
 import { TextInput } from 'react-native-paper';
 import ChipGroup from '../../components/ChipGroup';
+import {connect} from 'react-redux';
 
 class Register extends React.Component {
 
+    constructor(props){ 
+        super(props)
+    }
+
     state = {
-        isDoctor: true,
+        search: ''
     }
 
     onChangeText(text) {
 
     }
 
-    chipToggle() {
-        this.setState({
-            isDoctor: !this.state.isDoctor
-        })
-    }
-
     renderDoctorFields() {
-        if(this.state.isDoctor)
+        if(this.props.isDoctor)
         return (
             <View>
                 <TextInput
@@ -40,7 +39,7 @@ class Register extends React.Component {
                     selectionColor={colors.primary1}
                     underlineColor={colors.shadow}
                     onChangeText={text => this.onChangeText(text)}
-                    value={this.props.search}
+                    value={this.state.search}
                     keyboardType='email-address'
                 />
                 <TextInput
@@ -51,7 +50,7 @@ class Register extends React.Component {
                     selectionColor={colors.primary1}
                     underlineColor={colors.shadow}
                     onChangeText={text => this.onChangeText(text)}
-                    value={this.props.search}
+                    value={this.state.search}
                 />
             </View>
         )
@@ -61,11 +60,7 @@ class Register extends React.Component {
         return (
             <View style={styles.container}>
                 <LoginHeader title='Register with docMZ' />
-                <ChipGroup
-                    onPress1={() => this.chipToggle()}
-                    selected1={this.state.isDoctor}
-                    onPress2={() => this.chipToggle()}
-                    selected2={!this.state.isDoctor} />
+                <ChipGroup/>
                 <ScrollView>
                     <TextInput
                         label='Name'
@@ -75,7 +70,7 @@ class Register extends React.Component {
                         underlineColor={colors.shadow}
                         style={{ ...styles.searchbar, marginTop: hp('2%') }}
                         onChangeText={text => this.onChangeText(text)}
-                        value={this.props.search}
+                        value={this.state.search}
                     />
                     <TextInput
                         style={styles.searchbar}
@@ -85,7 +80,7 @@ class Register extends React.Component {
                         selectionColor={colors.primary1}
                         underlineColor={colors.shadow}
                         onChangeText={text => this.onChangeText(text)}
-                        value={this.props.search}
+                        value={this.state.search}
                         keyboardType='email-address'
                     />
                     <TextInput
@@ -96,7 +91,7 @@ class Register extends React.Component {
                         selectionColor={colors.primary1}
                         underlineColor={colors.shadow}
                         onChangeText={text => this.onChangeText(text)}
-                        value={this.props.search}
+                        value={this.state.search}
                         keyboardType='visible-password'
                     />
                       {this.renderDoctorFields()} 
@@ -108,7 +103,7 @@ class Register extends React.Component {
                         selectionColor={colors.primary1}
                         underlineColor={colors.shadow}
                         onChangeText={text => this.onChangeText(text)}
-                        value={this.props.search}
+                        value={this.state.search}
                         keyboardType='number-pad'
                     />
                     <TextInput
@@ -119,7 +114,7 @@ class Register extends React.Component {
                         selectionColor={colors.primary1}
                         underlineColor={colors.shadow}
                         onChangeText={text => this.onChangeText(text)}
-                        value={this.props.search}
+                        value={this.state.search}
                     />
                     <NormalButton
                         text='JOIN NOW'
@@ -172,4 +167,8 @@ const styles = StyleSheet.create({
 
 });
 
-export default Register;
+const mapStateToProps = state => ({
+    isDoctor: state.isDoctor,
+  });
+
+export default connect(mapStateToProps, null)(Register);
