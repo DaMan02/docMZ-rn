@@ -1,13 +1,20 @@
 import React from 'react';
 import { View, Text, TextInput, TouchableOpacity, ToastAndroid, ActivityIndicator } from 'react-native';
 import HomeHeader from '../../components/HomeHeader'
-import styles from './styles';
 import colors from '../../assets/colors';
 import Icon from 'react-native-vector-icons/Ionicons';
 import { connect } from 'react-redux';
 import { ScrollView } from 'react-native-gesture-handler';
 import meds from '../../assets/medicines.json'
-import { Colors } from 'react-native-paper';
+import { Colors, Searchbar } from 'react-native-paper';
+import fonts from '../../assets/fonts';
+import styles from './styles'
+import IllnessCard from '../../components/IllnessCard';
+import {
+  widthPercentageToDP as wp,
+  heightPercentageToDP as hp,
+} from 'react-native-responsive-screen';
+import HealthConcern from '../../components/HealthConcern';
 
 function onListPress(item) {
   ToastAndroid.show(item.salt_name, ToastAndroid.SHORT);
@@ -49,8 +56,10 @@ class SearchScreen extends React.Component {
   renderSearch() {
     return (
       <View style={styles.searchContainer}>
+         <ScrollView>
+        <Text style={styles.head}>Online Consultation</Text>
         <View style={styles.search}>
-          <Icon name='ios-search' size={20} color={colors.primary2} />
+          <Icon name='ios-search' size={18} color='black' />
           <TextInput
             style={styles.searchbar}
             onChangeText={text => this.onChangeText(text)}
@@ -58,6 +67,24 @@ class SearchScreen extends React.Component {
             placeholder='Search for drugs'
           />
         </View>
+          <Text style={{ ...fonts.h2, width: wp('50%'), marginStart: 20, padding: 10, marginBottom: 8, marginTop: 10 }}>Choose a category</Text>
+          <ScrollView style={styles.horizon} horizontal showsHorizontalScrollIndicator={false}>
+            <IllnessCard title='Cough & Cold' uri={require('../../assets/images/cough.png')} bg='#FAB0C5' />
+            <IllnessCard title='Diabets Care ' uri={require('../../assets/images/diabets.png')} bg='#FFB299' />
+            <IllnessCard title='Heart Health' uri={require('../../assets/images/heart.png')} bg='#FF7575' />
+            <IllnessCard title='Cough & Cold' uri={require('../../assets/images/cough.png')} bg='#FAB0C5' />
+            <IllnessCard title='Diabets Care ' uri={require('../../assets/images/diabets.png')} bg='#FFB299' />
+            <IllnessCard title='Heart Health' uri={require('../../assets/images/heart.png')} bg='#FF7575' />
+          </ScrollView>
+          <Text style={{ ...fonts.h2, marginStart: 20, padding: 10, marginBottom: 6, marginTop: 10 }}>Search by health concern</Text>
+          <ScrollView style={styles.horizon} horizontal showsHorizontalScrollIndicator={false}>
+            <HealthConcern title='General Doctor' icon='stethoscope' bg='#8CF1FF'/>
+            <HealthConcern title='Dental Care' icon='tooth' bg='#FAB0C5'/>
+            <HealthConcern title='General Doctor' icon='stethoscope' bg='#8CF1FF'/>
+            <HealthConcern title='Dental Care' icon='tooth' bg='#FAB0C5'/>
+          </ScrollView>
+          <View style={{height: hp('5%')}}></View>
+        </ScrollView>
       </View>
     );
   }
@@ -93,7 +120,6 @@ class SearchScreen extends React.Component {
   render() {
     return (
       <View style={styles.container}>
-        <HomeHeader />
         {this.renderSearch()}
         {this.renderProgress()}
         <ScrollView overScrollMode='always'>

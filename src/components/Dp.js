@@ -5,16 +5,22 @@ import fonts from "../assets/fonts";
 import Icon from 'react-native-vector-icons/Feather'
 
 
-// props: title, loc, price, miles
+// props
 
 const Dp = (props) => (
     <View style={styles.main}>
         <View style={styles.imgborder}></View>
         <Image source={require('../assets/images/doc.jpg')}
             style={styles.image} />
-        <TouchableOpacity onPress={props.onPress} activeOpacity={0.9} style={styles.edit}>
-            <Icon name="edit-2" size={20} color='black' />
-        </TouchableOpacity>
+            {props.edit? (
+                 <TouchableOpacity onPress={props.onPress} activeOpacity={0.9} style={styles.edit}>
+                 <Icon name="edit-2" size={20} color='black' />
+             </TouchableOpacity>
+            ) : (
+                <Text></Text>
+            )
+        }
+       
     </View>
 );
 
@@ -24,8 +30,8 @@ const styles = StyleSheet.create({
     image: {
         alignSelf: 'center',
         resizeMode: 'contain',
-        width: 160,
-        height: 160,
+        width: 140,
+        height: 140,
         borderRadius: 200,
         marginTop: 5
     },
@@ -34,15 +40,15 @@ const styles = StyleSheet.create({
         alignSelf: 'center',
         backgroundColor: '#00FFF3',
         borderRadius: 200,
-        width: 170,
-        height: 170,
+        width: 150,
+        height: 150,
     },
     edit: {
         alignSelf: 'center',
         alignItems: 'center',
         justifyContent: 'center',
         position: 'absolute',
-        top: 132,
+        top: 112,
         backgroundColor: 'white',
         height: 38,
         width: 74,

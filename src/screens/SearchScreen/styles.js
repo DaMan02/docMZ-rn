@@ -1,27 +1,36 @@
 import { StyleSheet } from 'react-native';
 import colors from '../../assets/colors';
 import fonts from '../../assets/fonts';
+import { heightPercentageToDP  as hp, widthPercentageToDP as wp} from 'react-native-responsive-screen';
 
 export default StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: colors.neutral,
+    backgroundColor: 'white',
   },
   searchbar: {
-    height: 40,
-    marginStart: 10
+    height: 46,
+    marginStart: 10,
+    paddingEnd: 100
+  },
+  head: {
+    ...fonts.header,
+    fontSize: 24,
+    marginStart: 20,
+    marginTop: 30,
+    marginBottom: 20
   },
   search: {
     flexDirection: 'row',
     alignItems: 'center',
     paddingStart: 14,
     paddingEnd: 14,
-    marginStart: 16,
+    marginStart: 28,
     marginEnd: 16,
     marginTop: 10,
     marginBottom: 8,
-    backgroundColor: 'white',
-    borderRadius: 4
+    backgroundColor: '#ECEFEF',
+    borderRadius: 6
   },
   indicator: {
     position: 'absolute',
@@ -30,12 +39,11 @@ export default StyleSheet.create({
     alignSelf: 'center',
   },
   searchContainer: {
-    backgroundColor: colors.text3,
-    marginTop: -4
+    marginTop: 10
   },
   dummy: {
     height: 0.5,
-    backgroundColor: '#E6EDF0',
+    backgroundColor: '#F4F4F4',
     marginEnd: 20,
     marginStart: 20
   },
@@ -50,4 +58,7 @@ export default StyleSheet.create({
     flex: 1,
     padding: 10,
   },
+  horizon: {
+    marginStart: 28
+  }
 });

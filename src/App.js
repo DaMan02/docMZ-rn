@@ -9,7 +9,6 @@ import SettingsScreen from './screens/SettingsScreen';
 import AppointmentsScreen from './screens/AppointmentsScreen';
 import DoctorsScreen from './screens/DoctorsScreen';
 import ProfileScreen from './screens/ProfileScreen';
-// import SearchResult from './screens/SearchResult';
 import colors from './assets/colors';
 
 const Tab = createMaterialBottomTabNavigator();
@@ -19,7 +18,7 @@ class App extends React.Component {
     return (
       <NavigationContainer>
         <Tab.Navigator
-          initialRouteName="Home"
+          initialRouteName="Doctors"
           screenOptions={({ route }) => ({
             tabBarIcon: ({ focused, color, size }) => {
               let iconName;

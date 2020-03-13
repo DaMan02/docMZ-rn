@@ -14,7 +14,7 @@ class ProfileMain extends React.Component {
         return (
             <View style={styles.main}>
                 <View style={styles.dp}>
-                    <Dp />
+                    <Dp edit={true}/>
                     <Text style={{...fonts.h3, alignSelf: 'center', marginTop: hp('3%') }}>Dr. Andrew Fagelman</Text>
                     <Text style={{...fonts.h3_thin, alignSelf: 'center'}}>Surgeon</Text>
                 </View>
