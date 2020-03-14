@@ -3,7 +3,7 @@ import { View, Text, StyleSheet, StatusBar, TouchableOpacity} from 'react-native
 import colors from "../../assets/colors";
 import NewsRow from '../../components/NewsRow';
 import { ScrollView } from 'react-native-gesture-handler';
-
+import fonts from '../../assets/fonts';
 
 class News extends React.Component{
 

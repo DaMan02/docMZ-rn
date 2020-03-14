@@ -7,22 +7,22 @@ import {
     widthPercentageToDP as wp,
     heightPercentageToDP as hp,
 } from 'react-native-responsive-screen';
+import Rating from './Rating';
 
 // props: title, uri
 
 const DoctorPreview = (props) => (
     <TouchableOpacity activeOpacity={0.7} onPress={props.onPress} style={{ ...styles.main, backgroundColor: props.bg }}>
         <View style={styles.dp}>
-            <Dp />
+            <Image source={require('../assets/images/doc.jpg')}
+                style={styles.image} />
         </View>
         <View>
-            <Text style={styles.title}>{props.name}</Text>
+            <Text style={styles.title}>Dr. {props.name}</Text>
             <Text style={styles.org}>{props.org}</Text>
             <Text style={styles.spec}>{props.spec}</Text>
         </View>
-        <View style={styles.rate}>
-            <Text style={{ color: 'white' }}>{props.rating}</Text>
-        </View>
+        {/* <Rating rate={props.rating} /> */}
     </TouchableOpacity>
 );
 
@@ -31,7 +31,7 @@ const styles = StyleSheet.create({
         borderRadius: 16,
         marginStart: 20,
         marginEnd: 20,
-        height: hp('30%'),
+        height: hp('16%'),
         elevation: 3,
         marginBottom: 16,
         flexDirection: 'row'
@@ -39,32 +39,25 @@ const styles = StyleSheet.create({
     dp: {
         alignSelf: 'center',
         alignItems: 'center',
-        marginTop: 14,
         marginStart: 10
-    },
-    rate: {
-        position: 'absolute',
-        top: 16,
-        right: 16,
-        alignItems: 'center',
-        backgroundColor: '#FFC100',
-        height: 22,
-        width: 36,
-        borderRadius: 6
     },
     title: {
         ...fonts.h2,
-        color: 'white',
-        marginTop: 40,
+        marginTop: 20,
         marginStart: 16,
-        maxWidth: wp('40%')
     },
     org: {
         ...fonts.para,
-        color: 'white',
         marginStart: 16
-
-    }
+    },
+    image: {
+        alignSelf: 'center',
+        resizeMode: 'contain',
+        width: 60,
+        height: 60,
+        borderRadius: 200,
+        marginTop: 5
+    },
 });
 
 export default DoctorPreview;

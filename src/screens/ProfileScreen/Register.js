@@ -15,10 +15,6 @@ import {connect} from 'react-redux';
 
 class Register extends React.Component {
 
-    constructor(props){ 
-        super(props)
-    }
-
     state = {
         search: ''
     }

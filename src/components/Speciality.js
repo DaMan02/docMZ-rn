@@ -22,7 +22,7 @@ const Speciality = (props) => (
 const styles = StyleSheet.create({
     main: {
         borderRadius: 16,
-        width: wp('40%'),
+        width: wp('34%'),
         marginStart: 6,
         marginEnd: 6,
         height: hp('30%'),
@@ -30,23 +30,23 @@ const styles = StyleSheet.create({
         marginBottom: 1
     },
     img: {
-        height: 50,
-        width: 60,
+        height: 40,
+        width: 50,
         borderRadius: 10,
         borderWidth: 1,
         justifyContent: 'center',
         alignSelf: 'center',
-        marginTop: 10
+        marginTop: 6
     },
     image: {
         alignSelf: 'center',
         resizeMode: 'contain',
-        width: 60,
-        height: 60,
+        width: 50,
+        height: 50,
     },
     title: {
         ...fonts.h4,
-        marginTop: 10,
+        marginTop: 2,
         padding: 6,
         marginStart: 10,
         marginEnd: 10,

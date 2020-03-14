@@ -1,21 +1,20 @@
 import React from 'react';
 import {StyleSheet, Text, TouchableOpacity, View} from "react-native";
-import colors from "../assets/colors";
 import fonts from '../assets/fonts';
 import {
     widthPercentageToDP as wp,
     heightPercentageToDP as hp,
 } from 'react-native-responsive-screen';
 
-// props: text, tColor
+// props: backgroundColor, text, textColor, border, radius, onPress
 
-const OutlineButton = (props) => (
+const LongButton = (props) => (
     <View  
-    style={styles.main}>
+    style={{...props.buttonStyle, alignItems:'center', justifyContent:'center'  }}>
     <TouchableOpacity activeOpacity={0.6} onPress={props.onPress}
-     style={{...styles.buttonContainer, borderColor: props.tColor}}>
+    style={{...styles.buttonContainer, backgroundColor:props.backgroundColor }} >
         <View >
-            <Text style={{ ...fonts.h2, color: props.tColor}}>{props.text}</Text>
+            <Text style={{...fonts.para, color: props.textColor}}>{props.text}</Text>
         </View>
     </TouchableOpacity>
     </View>
@@ -29,11 +28,12 @@ const styles = StyleSheet.create({
     buttonContainer: {
         justifyContent:'center',
         alignItems:'center',
-        width: wp('50%'),
-        height: 46,
-        borderRadius: 6, 
-        borderWidth: 1      
+        width: wp('74%'),
+        height: 44,   
+        borderRadius: 28 ,
+        elevation: 2,
+        margin: 10
     },
 });
 
-export default OutlineButton;
+export default LongButton;

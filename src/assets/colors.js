@@ -66,6 +66,10 @@ export default {
     h1: '#2d2d32',
     h2: '#34495E',
     h3: '#34495E',
-    para: '#34495E'
+    para: '#34495E',
+    // others
+    greenblue: '#00CA93',
+    darkgreen: '#009C24',
+    darkgray: '#626262'
 };
 //*/

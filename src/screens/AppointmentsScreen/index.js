@@ -12,6 +12,7 @@ import {
 } from 'react-native-responsive-screen';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import colors from '../../assets/colors';
+import styles from './styles';
 
 class Appointments extends Component {
   render() {
