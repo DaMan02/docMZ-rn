@@ -2,7 +2,6 @@ import React from 'react';
 import { StyleSheet, Text, TouchableOpacity, View, Image } from "react-native";
 import colors from '../assets/colors';
 import fonts from "../assets/fonts";
-import Dp from './Dp'
 import {
     widthPercentageToDP as wp,
     heightPercentageToDP as hp,

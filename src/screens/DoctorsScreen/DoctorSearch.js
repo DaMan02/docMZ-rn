@@ -11,14 +11,13 @@ import {
   widthPercentageToDP as wp,
   heightPercentageToDP as hp,
 } from 'react-native-responsive-screen';
-import { Api } from '../constants';
-import { Axios } from '../config';
-import colors from '../assets/colors';
-import fonts from '../assets/fonts';
-import Speciality from '../components/Speciality';
-import DoctorPreview from '../components/DoctorPreview';
+import { Api } from '../../constants';
+import { Axios } from '../../config';
+import colors from '../../assets/colors';
+import fonts from '../../assets/fonts';
+import Speciality from '../../components/Speciality';
+import DoctorPreview from '../../components/DoctorPreview';
 import Icon from 'react-native-vector-icons/Ionicons';
-
 
 class DoctorSearch extends Component {
   state = {
@@ -74,7 +73,7 @@ class DoctorSearch extends Component {
               this.state.specialityList.map(speciality => {
                 return (
                   <Speciality onPress={() => console.log(speciality.name)}
-                    title={speciality.name} light='#FFEBD5' dark='#FF8300' uri={require('../assets/images/aid.png')} />
+                    title={speciality.name} light='#FFEBD5' dark='#FF8300' uri={require('../../assets/images/aid.png')} />
                 );
               })
             ) : (
@@ -143,8 +142,7 @@ const styles = StyleSheet.create({
     marginStart: 18,
     backgroundColor: 'white',
     marginBottom: 14,
-    marginTop: hp('1%'),
-
+    marginTop: hp('1%')
   },
   scroll: {
     justifyContent: 'center',

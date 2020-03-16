@@ -1,0 +1,838 @@
+{
+	"info": {
+		"_postman_id": "90b2e2a9-5372-42fd-bdb2-b0597ca3439f",
+		"name": "Docmz",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Register Doctor",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"email\": \"test@gmail.com\",\n    \"password\": \"123456789\",\n    \"specialty\": \"test\",\n    \"phone\": \"123456789\",\n    \"enumeration_type\": \"NPI-1\",\n    \"npi\": 1407999378,\n    \"last_updated_epoch\": 1183852800,\n    \"created_epoch\": 1171411200,\n    \"basic\": {\n        \"name_prefix\": \"DR.\",\n        \"first_name\": \"ANDREW\",\n        \"last_name\": \"FAGELMAN\",\n        \"credential\": \"M.D.\",\n        \"sole_proprietor\": \"YES\",\n        \"gender\": \"M\",\n        \"enumeration_date\": \"2007-02-14\",\n        \"last_updated\": \"2007-07-08\",\n        \"status\": \"A\",\n        \"name\": \"FAGELMAN ANDREW\"\n    },\n    \"other_names\": [],\n    \"addresses\": [\n        {\n            \"country_code\": \"US\",\n            \"country_name\": \"United States\",\n            \"address_purpose\": \"LOCATION\",\n            \"address_type\": \"DOM\",\n            \"address_1\": \"155 SPRING ST\",\n            \"address_2\": \"4TH FLOOR\",\n            \"city\": \"NEW YORK\",\n            \"state\": \"NY\",\n            \"postal_code\": \"100125208\",\n            \"telephone_number\": \"212-343-0080\"\n        },\n        {\n            \"country_code\": \"US\",\n            \"country_name\": \"United States\",\n            \"address_purpose\": \"MAILING\",\n            \"address_type\": \"DOM\",\n            \"address_1\": \"21 S END AVE\",\n            \"address_2\": \"#424\",\n            \"city\": \"NEW YORK\",\n            \"state\": \"NY\",\n            \"postal_code\": \"102801044\"\n        }\n    ],\n    \"taxonomies\": [\n        {\n            \"code\": \"207R00000X\",\n            \"desc\": \"Internal Medicine\",\n            \"primary\": true,\n            \"state\": \"NY\",\n            \"license\": \"220049\"\n        }\n    ],\n    \"identifiers\": [\n        {\n            \"identifier\": \"02524183\",\n            \"code\": \"05\",\n            \"desc\": \"MEDICAID\",\n            \"state\": \"NY\",\n            \"issuer\": \"\"\n        }\n    ]\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3001/doctors/register",
+					"host": [
+						"localhost"
+					],
+					"port": "3001",
+					"path": [
+						"doctors",
+						"register"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Authenticate",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"email\":\"test@gmail.com\",\n\t\"password\":\"123456789\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3001/doctors/authenticate",
+					"host": [
+						"localhost"
+					],
+					"port": "3001",
+					"path": [
+						"doctors",
+						"authenticate"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Profile update",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"id\":\"5dc126dc4ee7e60b54e44d6f\",\n\"steps\":[1,1,0,0]}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3001/doctors/profile/update",
+					"host": [
+						"localhost"
+					],
+					"port": "3001",
+					"path": [
+						"doctors",
+						"profile",
+						"update"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Save slots",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "  { \"from\": \"2017-02-01\",\r\n    \"to\": \"2017-03-01\",\r\n    \"duration\": \"15\",\r\n    \"interval\": \"15\",\r\n    \"schedule\": \r\n        {\r\n            \"weekdays\": {\r\n                \"from\": \"09:00\", \"to\": \"17:00\",\r\n                \"unavailability\": [\r\n                    { \"from\": \"12:00\", \"to\": \"13:00\" }\r\n                ]\r\n            },\r\n            \"unavailability\": [\r\n                { \"from\": \"2017-02-20 00:00\", \"to\": \"2017-02-27 00:00\" },\r\n                { \"from\": \"2017-02-02 00:00\", \"to\": \"2017-02-06 00:00\" }\r\n            ]\r\n        }}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3001/doctors/saveslots",
+					"host": [
+						"localhost"
+					],
+					"port": "3001",
+					"path": [
+						"doctors",
+						"saveslots"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Stripe | List all cards",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:3001/stripe/list/cus_G8M6Gz7PTLlfnF",
+					"host": [
+						"localhost"
+					],
+					"port": "3001",
+					"path": [
+						"stripe",
+						"list",
+						"cus_G8M6Gz7PTLlfnF"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Stripe | Charge cards though profile/saved cards",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"amount\":\"200\",\n\t\"source\":\"card_1Fc7E1EEAfRf5FilqaAmoM2R\",\n\t\"customer\":\"cus_G8Nzhpci1nSal8\",\n\t\"description\":\"Appointment with Dr. Anas at 4:30 pm 01/12/2019\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3001/stripe/charge/profile",
+					"host": [
+						"localhost"
+					],
+					"port": "3001",
+					"path": [
+						"stripe",
+						"charge",
+						"profile"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Stripe | Create a customer profile ",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\"description\":\"test profile 2\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3001/stripe/create/profile",
+					"host": [
+						"localhost"
+					],
+					"port": "3001",
+					"path": [
+						"stripe",
+						"create",
+						"profile"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Stripe | Create/save cards on customers profile",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"number\":\"4242424242424242\", \n\t\"exp_month\":\"03\", \n\t\"exp_year\":\"21\",\n\t\"cvc\":\"883\", \n\t\"customer\":\"cus_G8Nzhpci1nSal8\",\n\t\"name\":\"test card\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3001/stripe/create/card/profile",
+					"host": [
+						"localhost"
+					],
+					"port": "3001",
+					"path": [
+						"stripe",
+						"create",
+						"card",
+						"profile"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Stripe | Charge a card",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"number\":\"4242424242424242\", \n\t\"exp_month\":\"03\", \n\t\"exp_year\":\"21\",\n\t\"cvc\":\"883\", \n\t\"description\":\"Appointment booked with Dr Alex at 2:00 pm 05/10/2019\",\n\t\"name\":\"test card\",\n\t\"amount\":\"400\",\n\t\"email\":\"anas3rde@gmail.com\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3001/stripe/charge/card",
+					"host": [
+						"localhost"
+					],
+					"port": "3001",
+					"path": [
+						"stripe",
+						"charge",
+						"card"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Register a patient",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"name\":\"anas\", \n\t\"email\":\"anas3rde@gmail.com\", \n\t\"phone\":\"12234\", \n\t\"password\":\"3125\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3001/patient/register",
+					"host": [
+						"localhost"
+					],
+					"port": "3001",
+					"path": [
+						"patient",
+						"register"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Authenticate the patient",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"email\":\"anas3rde@gmail.com\", \n\t\"password\":\"3125\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3001/patient/authenticate",
+					"host": [
+						"localhost"
+					],
+					"port": "3001",
+					"path": [
+						"patient",
+						"authenticate"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Search doctors",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\"specialty\":\"153\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3001/doctors/search",
+					"host": [
+						"localhost"
+					],
+					"port": "3001",
+					"path": [
+						"doctors",
+						"search"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get doctor by id ",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3001/doctors/getdoc/5dad6ba6f4ab551864e63f00",
+					"host": [
+						"localhost"
+					],
+					"port": "3001",
+					"path": [
+						"doctors",
+						"getdoc",
+						"5dad6ba6f4ab551864e63f00"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Book an appointment",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"patient\":\"5dcba17a2c9ed62528346794\",\n\t\"transactionId\":\"12345\", \n\t\"timeSlot\":\"5dcbc8b7f3d00c29a8e0d006\", \n\t\"practise\":\"5dad6ba6f4ab551864e63f01\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3001/appointment/book",
+					"host": [
+						"localhost"
+					],
+					"port": "3001",
+					"path": [
+						"appointment",
+						"book"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "cancel Appointment ",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"byPatient\":\"true\",\n\t\"byDoctor\":\"false\",\n\t\"reason\":\"Have some important work\",\n\t\"id\":\"5dcbc8b7f3d00c29a8e0d007\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3001/appointment/cancel",
+					"host": [
+						"localhost"
+					],
+					"port": "3001",
+					"path": [
+						"appointment",
+						"cancel"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get appointments for next 3 days",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"limit\":\"3\", \n\t\"doctor\":\"5dad6ba6f4ab551864e63f01\",\n\t\"date\":\"2019-11-16T10:24:39.736Z\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3001/appointment/get",
+					"host": [
+						"localhost"
+					],
+					"port": "3001",
+					"path": [
+						"appointment",
+						"get"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Approve appointment ",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"patient\":\"John\", \n      \"time\":\"3:20 PM\", \n      \"date\":\"12, January, 2019\", \n      \"address\":\"Park, Los Santos\",\n      \"timeSlot\":\"5dcbc8b7f3d00c29a8e0d006\",\n      \"email\":\"anas3rde@gmail.com\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3001/appointment/approve",
+					"host": [
+						"localhost"
+					],
+					"port": "3001",
+					"path": [
+						"appointment",
+						"approve"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Patient profile update",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"id\":\"5dcba17a2c9ed62528346794\",\n\t\"race\":\"blabla\",\n  \"phone\":\"98861\",\n  \"home\":\"98267861\",\n  \"work\":\"889454565\",\n  \"preferredNumber\":\"phone\",\n  \"Address\":{\"street\":\"test\"},\n  \"sex\":\"male\",\n  \"dob\":\"12/12/1996\",\n  \"active\":true,\n  \"wellnessReminder\":true,\n  \"appointmentReminderText\":true,\n  \"notify\":true,\n  \"ethnicity\":\"blabla\",\n  \"zip\":\"3125\",\n  \"lastLogin\": \"\",\n  \"bloodGroup\":\"O+\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3001/patient/update",
+					"host": [
+						"localhost"
+					],
+					"port": "3001",
+					"path": [
+						"patient",
+						"update"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Set password - Patient",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"token\":\"ca92105df21cd9b13d8a0375c312ffc708f9ba9b\",\n\t\"password\":\"123456\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3001/patient/setpassword",
+					"host": [
+						"localhost"
+					],
+					"port": "3001",
+					"path": [
+						"patient",
+						"setpassword"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "forget Password - Patient ",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"email\":\"anas3rde@gmail.com\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3001/patient/forgetpassword",
+					"host": [
+						"localhost"
+					],
+					"port": "3001",
+					"path": [
+						"patient",
+						"forgetpassword"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "upload picture",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "",
+							"type": "file",
+							"src": "/C:/Users/Admin/Desktop/bene.png"
+						}
+					],
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3001/doctors/upload/5dad6ba6f4ab551864e63f00",
+					"host": [
+						"localhost"
+					],
+					"port": "3001",
+					"path": [
+						"doctors",
+						"upload",
+						"5dad6ba6f4ab551864e63f00"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete picture route",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"id\":\"5dad6ba6f4ab551864e63f00\",\n\t\"query\":\"public\\\\images\\\\uploads\\\\bene-1574143455578.png\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3001/doctors/picture/delete",
+					"host": [
+						"localhost"
+					],
+					"port": "3001",
+					"path": [
+						"doctors",
+						"picture",
+						"delete"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get patient profile details",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:3001/patient/getinfo/5dcbab54d38fe310805000f7",
+					"host": [
+						"localhost"
+					],
+					"port": "3001",
+					"path": [
+						"patient",
+						"getinfo",
+						"5dcbab54d38fe310805000f7"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Test card",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"number\":\"4242424242424242\", \n\t\"exp_month\":\"03\", \n\t\"exp_year\":\"21\",\n\t\"cvc\":\"883\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3001/stripe/testcard",
+					"host": [
+						"localhost"
+					],
+					"port": "3001",
+					"path": [
+						"stripe",
+						"testcard"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}

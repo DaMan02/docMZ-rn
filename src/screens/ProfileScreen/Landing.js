@@ -29,7 +29,7 @@ class Landing extends React.Component {
                     <NormalButton
                         text='Join'
                         backgroundColor='white'
-                        textColor={colors.primary1}
+                        textColor='black'
                         border={colors.primary1}
                         radius={40}
                         onPress={() => this.props.navigation.navigate('Register')}

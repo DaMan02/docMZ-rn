@@ -1,14 +1,14 @@
 import React from 'react';
 import { View, Text, StyleSheet, Image } from 'react-native';
-import fonts from '../assets/fonts';
+import fonts from '../../assets/fonts';
 import {
     widthPercentageToDP as wp,
     heightPercentageToDP as hp,
 } from 'react-native-responsive-screen';
 import { ScrollView } from 'react-native-gesture-handler';
-import colors from '../assets/colors';
-import dimen from '../assets/dimen';
-import ConsultFormat from '../components/ConsultFormat';
+import colors from '../../assets/colors';
+import dimen from '../../assets/dimen';
+import ConsultFormat from '../../components/ConsultFormat';
 
 const ms = wp('10%');
 
@@ -19,7 +19,7 @@ class ConsultOptions extends React.Component {
         // const { docName } = this.props.route.params;
         return (
             <ScrollView style={styles.main}>
-                <Text style={{ ...styles.title, marginTop: hp('12%') }}>Choose</Text>
+                <Text style={{ ...styles.title, marginTop: hp('6%') }}>Choose</Text>
                 <Text style={styles.title}>Consultation</Text>
                 <Text style={styles.title}>Format</Text>
                 <View style={styles.scroll}>
@@ -42,7 +42,7 @@ const styles = StyleSheet.create({
         marginStart: dimen.ms
     },
     scroll: {
-        marginTop: hp('3%'),
+        marginTop: hp('2%'),
     }
 });
 

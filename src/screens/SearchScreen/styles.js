@@ -1,7 +1,7 @@
 import { StyleSheet } from 'react-native';
 import colors from '../../assets/colors';
 import fonts from '../../assets/fonts';
-import { heightPercentageToDP  as hp, widthPercentageToDP as wp} from 'react-native-responsive-screen';
+import { heightPercentageToDP as hp, widthPercentageToDP as wp } from 'react-native-responsive-screen';
 
 export default StyleSheet.create({
   container: {
@@ -11,7 +11,7 @@ export default StyleSheet.create({
   searchbar: {
     height: 46,
     marginStart: 10,
-    paddingEnd: 100
+    paddingEnd: 130
   },
   head: {
     ...fonts.header,
@@ -19,6 +19,15 @@ export default StyleSheet.create({
     marginStart: 20,
     marginTop: 30,
     marginBottom: 20
+  },
+  go: {
+    backgroundColor: 'white',
+    height: 38,
+    width: 38,
+    borderRadius: 50,
+    alignItems: 'center',
+    justifyContent: 'center',
+    elevation: 1
   },
   search: {
     flexDirection: 'row',
@@ -32,14 +41,7 @@ export default StyleSheet.create({
     backgroundColor: '#ECEFEF',
     borderRadius: 6
   },
-  indicator: {
-    position: 'absolute',
-    top: 75,
-    right: 30,
-    alignSelf: 'center',
-  },
   searchContainer: {
-    marginTop: 10
   },
   dummy: {
     height: 0.5,
@@ -47,11 +49,11 @@ export default StyleSheet.create({
     marginEnd: 20,
     marginStart: 20
   },
-   list: {
+  list: {
     backgroundColor: 'white',
     marginStart: 8,
     marginEnd: 8,
-    borderRadius: 2
+    borderRadius: 2,
   },
   listItems: {
     ...fonts.h3_thin,
@@ -59,6 +61,6 @@ export default StyleSheet.create({
     padding: 10,
   },
   horizon: {
-    marginStart: 28
+    paddingStart: 28,
   }
 });

@@ -14,7 +14,7 @@ const NormalButton = (props) => (
     <TouchableOpacity activeOpacity={0.6} onPress={props.onPress}
     style={{...styles.buttonContainer, backgroundColor:props.backgroundColor, borderColor: props.backgroundColor, borderRadius: props.radius, borderWidth: 1 }} >
         <View >
-            <Text style={{...fonts.h2, color: 'white'}}>{props.text}</Text>
+            <Text style={{...fonts.h2, color: props.textColor}}>{props.text}</Text>
         </View>
     </TouchableOpacity>
     </View>

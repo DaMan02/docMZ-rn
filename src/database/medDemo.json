@@ -1,0 +1,219 @@
+{
+    "Medicine_Details": [
+        {
+            "salt_name": "CLARITHROMYCIN 1%",
+            "Brands": [
+                {
+                    "brand_name": "Acnesol CL Lotion 30ml",
+                    "Price": "61.50",
+                    "manufacturer": "Systopic Laboratories Pvt Ltd"
+                },
+                {
+                    "brand_name": "Acnecure Gel 20gm",
+                    "Price": "63.00",
+                    "manufacturer": "Torque Pharmaceuticals Pvt Ltd"
+                }
+            ]
+        },
+        {
+            "salt_name": "ALOE VERA 0.2%+TEA TREE OIL 0.002+TRICLOSAN 0.005+ZINC 0.001",
+            "Brands": [
+                {
+                    "brand_name": "Acnelak Soap 75gm",
+                    "Price": "84.00",
+                    "manufacturer": "Menarini India Pvt Ltd"
+                }
+            ]
+        },
+        {
+            "salt_name": "CLARITHROMYCIN 1%W/W",
+            "Brands": [
+                {
+                    "brand_name": "Acnesol CL Gel 15gm",
+                    "Price": "70.00",
+                    "manufacturer": "Systopic Laboratories Pvt Ltd"
+                }
+            ]
+        },
+        {
+            "salt_name": "TRETINOIN 0.025%+CLINDAMYCIN 1%",
+            "Brands": [
+                {
+                    "brand_name": "Acnetoin Plus Oinment 15gm",
+                    "Price": "85.00",
+                    "manufacturer": "Leeford Healthcare Ltd"
+                }
+            ]
+        },
+        {
+            "salt_name": "ADAPALENE 0.10%",
+            "Brands": [
+                {
+                    "brand_name": "Aclene 0.10% Gel 15gm",
+                    "Price": "86.25",
+                    "manufacturer": "Cipla Ltd"
+                }
+            ]
+        },
+        {
+            "salt_name": "CLINDAMYCIN 1%+ZINC ACETATE 1 %",
+            "Brands": [
+                {
+                    "brand_name": "Acnelak Clz Cream 15gm",
+                    "Price": "79.00",
+                    "manufacturer": "Menarini India Pvt Ltd"
+                }
+            ]
+        },
+        {
+            "salt_name": "BENZOYL PEROXIDE 5 %+CLINDAMYCIN 1 %",
+            "Brands": [
+                {
+                    "brand_name": "ACNEGEL B Gel 15gm",
+                    "Price": "165.00",
+                    "manufacturer": "West Coast Pharmaceutical Works Ltd"
+                }
+            ]
+        },
+        {
+            "salt_name": "Allantoin",
+            "Brands": [
+                {
+                    "brand_name": "Acnestal Soap 75gm",
+                    "Price": "110.00",
+                    "manufacturer": "Biomedica Life Science"
+                }
+            ]
+        },
+        {
+            "salt_name": "DAPSONE 5%W/W",
+            "Brands": [
+                {
+                    "brand_name": "Acnedap Gel 15gm",
+                    "Price": "329.12",
+                    "manufacturer": "Cipla Ltd"
+                }
+            ]
+        },
+        {
+            "salt_name": "CLINDAMYCIN 1.00%W/W+ADAPALENE 0.1%W/W",
+            "Brands": [
+                {
+                    "brand_name": "Acnetor AD Gel 15gm",
+                    "Price": "263.95",
+                    "manufacturer": "Torrent Pharmaceuticals Ltd"
+                }
+            ]
+        },
+        {
+            "salt_name": "ADAPALENE 0.1%W/W+BENZOYL PEROXIDE 0.25%W/W",
+            "Brands": [
+                {
+                    "brand_name": "Adabor Gel 15gm",
+                    "Price": "370.00",
+                    "manufacturer": "Hetero Healthcare Ltd"
+                }
+            ]
+        },
+        {
+            "salt_name": "ALLANTOIN 3%+ALOE VERA 0.01+TITANIUM DIOXIDE 0.05",
+            "Brands": [
+                {
+                    "brand_name": "Acnerex Soap 75gm",
+                    "Price": "92.00",
+                    "manufacturer": "Med Manor Organics Pvt Ltd"
+                }
+            ]
+        },
+        {
+            "salt_name": "ISOTRETINOIN 0.50%",
+            "Brands": [
+                {
+                    "brand_name": "Airet 0.50% Cream 15gm",
+                    "Price": "61.13",
+                    "manufacturer": "Menarini India Pvt Ltd"
+                }
+            ]
+        },
+        {
+            "salt_name": "RETINOIC ACID 0.05%",
+            "Brands": [
+                {
+                    "brand_name": "Airol 0.05% Cream 20gm",
+                    "Price": "113.00",
+                    "manufacturer": "Win Medicare Pvt Ltd"
+                }
+            ]
+        },
+        {
+            "salt_name": "ADAPALENE 0.1 %+BENZOYL PEROXIDE 2.5 %",
+            "Brands": [
+                {
+                    "brand_name": "ACLAIR Gel(Topical) 15gm",
+                    "Price": "269.00",
+                    "manufacturer": "Regaliz Medicare Ltd"
+                }
+            ]
+        },
+        {
+            "salt_name": "ADAPALENE 1%+CLINDAMYCIN 1%",
+            "Brands": [
+                {
+                    "brand_name": "Acnicin 1/1% Solution 25ml",
+                    "Price": "27.86",
+                    "manufacturer": "Alembic Pharmaceuticals Ltd"
+                }
+            ]
+        },
+        {
+            "salt_name": "ADAPALENE 1%",
+            "Brands": [
+                {
+                    "brand_name": "Alene Gel 15gm",
+                    "Price": "74.91",
+                    "manufacturer": "Cadila Pharmaceuticals Ltd"
+                }
+            ]
+        },
+        {
+            "salt_name": "GLYCOLIC ACID 1 %+SALICYLIC ACID 2 %",
+            "Brands": [
+                {
+                    "brand_name": "ACNEPAD Wipes 50ct",
+                    "Price": "329.00",
+                    "manufacturer": "Regaliz Medicare Ltd"
+                }
+            ]
+        },
+        {
+            "salt_name": "BENZOYL PEROXIDE 2.5%+CLINDAMYCIN 1%",
+            "Brands": [
+                {
+                    "brand_name": "Alesa 2.5% Gel 1gm",
+                    "Price": "9.11",
+                    "manufacturer": "Glenmark Pharmaceuticals Ltd"
+                }
+            ]
+        },
+        {
+            "salt_name": "ISOTRETINOIN 0.10%",
+            "Brands": [
+                {
+                    "brand_name": "Airet 0.10% Cream 15gm",
+                    "Price": "89.10",
+                    "manufacturer": "Menarini India Pvt Ltd"
+                }
+            ]
+        },
+        {
+            "salt_name": "ADAPALENE 0.1%W/W+CLINDAMYCIN PHOSPHATE 1%W/W",
+            "Brands": [
+                {
+                    "brand_name": "Nayzit Gel 15gm",
+                    "Price": "150.00",
+                    "manufacturer": "Alniche Life Sciences Pvt Ltd"
+                }
+            ]
+        }
+    ]
+}

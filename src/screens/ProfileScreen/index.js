@@ -5,6 +5,7 @@ import ProfileMain from './ProfileMain';
 import AccountDetails from './AccountDetails';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
+import SettingsScreen from '../SettingsScreen';
 
 const Stack = createStackNavigator();
 
@@ -20,6 +21,7 @@ class ProfileScreen extends React.Component {
                     }}>
                     <Stack.Screen name="ProfileMain" component={ProfileMain} />
                     <Stack.Screen name="AccountDetails" component={AccountDetails} />
+                    <Stack.Screen name="SettingsScreen" component={SettingsScreen} />
                 </Stack.Navigator>
             </NavigationContainer>
         )

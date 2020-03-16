@@ -40,7 +40,6 @@ const reducer = (state = initialState, action) => {
       return {
         ...state,
         search: action.search,
-        load: true
       };
     case 'LOAD':
       return {

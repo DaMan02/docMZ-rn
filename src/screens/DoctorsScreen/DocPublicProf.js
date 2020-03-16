@@ -1,14 +1,14 @@
 import React from 'react';
 import { View, Text, StyleSheet, Image } from 'react-native';
-import fonts from '../assets/fonts';
-import OutlineButton from '../components/OutlineButton'
+import fonts from '../../assets/fonts';
+import OutlineButton from '../../components/OutlineButton'
 import {
     widthPercentageToDP as wp,
     heightPercentageToDP as hp,
 } from 'react-native-responsive-screen';
 import { ScrollView } from 'react-native-gesture-handler';
-import colors from '../assets/colors';
-import NormalButton from '../components/NormalButton';
+import colors from '../../assets/colors';
+import NormalButton from '../../components/NormalButton';
 
 const ms = wp('10%');
 
@@ -20,11 +20,11 @@ class DocPublicProf extends React.Component {
         return (
             <View style={styles.main}>
                 <View style={styles.dp}>
-                    <Image source={require('../assets/images/doc.jpg')}
+                    <Image source={require('../../assets/images/doc.jpg')}
                         style={styles.image} />
                     <View style={styles.btn}>
                         <NormalButton onPress={() => navigation.navigate('ConsultOptions')}
-                            radius={8} text='CONSULT NOW' backgroundColor={colors.greenblue}></NormalButton>
+                            radius={8} text='CONSULT NOW' backgroundColor={colors.greenblue} textColor='white'></NormalButton>
                     </View>
                 </View>
                 <ScrollView>

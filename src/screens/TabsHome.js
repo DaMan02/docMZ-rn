@@ -1,22 +1,20 @@
 import React from 'react';
 import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs';
 import { NavigationContainer } from '@react-navigation/native';
-// import Icon from 'react-native-vector-icons/Ionicons';
 import Icon from 'react-native-vector-icons/Fontisto'
-import HomeScreen from './screens/HomeScreen';
-import SearchScreen from './screens/SearchScreen';
-import SettingsScreen from './screens/SettingsScreen';
-import AppointmentsScreen from './screens/AppointmentsScreen';
-import DoctorsScreen from './screens/DoctorsScreen';
-import ProfileScreen from './screens/ProfileScreen';
-import colors from './assets/colors';
+import HomeScreen from './HomeScreen';
+import AppointmentsScreen from './AppointmentsScreen';
+import DoctorsScreen from './DoctorsScreen';
+import ProfileScreen from './ProfileScreen';
+import SearchScreen from './SearchScreen';
+import colors from '../assets/colors';
 
 const Tab = createMaterialBottomTabNavigator();
 
 class TabsHome extends React.Component {
   render() {
     return (
-      <NavigationContainer>
+      <NavigationContainer independent={true}>
         <Tab.Navigator
           initialRouteName="Doctors"
           screenOptions={({ route }) => ({
@@ -24,11 +22,9 @@ class TabsHome extends React.Component {
               let iconName;
               if (route.name === 'Home') {
                 iconName = 'home';
-              }else if (route.name === 'Settings') {
-                iconName = 'player-settings';
               }else if (route.name === 'Search') {
                 iconName = 'search';
-              }else if (route.name === 'Appoint.') {
+              }else if (route.name === 'Appointment') {
                 iconName = 'clock';
               }else if (route.name === 'Doctors') {
                 iconName = 'doctor';
@@ -39,16 +35,15 @@ class TabsHome extends React.Component {
             },
           })}
           tabBarOptions={{
-            activeTintColor: 'blue',
+            activeTintColor: colors.primary1,
             inactiveTintColor: 'gray',
           }}
           barStyle={{ backgroundColor: 'white' }}
         >
           <Tab.Screen name="Search" component={SearchScreen} />           
-          <Tab.Screen name="Appoint." component={AppointmentsScreen} /> 
           <Tab.Screen name="Home" component={HomeScreen} />
           <Tab.Screen name="Doctors" component={DoctorsScreen} /> 
-          <Tab.Screen name="Settings" component={SettingsScreen} />  
+          <Tab.Screen name="Appointment" component={AppointmentsScreen} /> 
           <Tab.Screen name="Profile" component={ProfileScreen} />        
         </Tab.Navigator>
       </NavigationContainer>
