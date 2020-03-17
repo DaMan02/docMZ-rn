@@ -1,8 +1,8 @@
 import React from 'react';
 import { View, Text, StyleSheet, StatusBar, TouchableOpacity} from 'react-native';
-import colors from "../../assets/colors";
+import colors from "../../../assets/colors";
 import Icon from 'react-native-vector-icons/Ionicons';
-import TipsRow from '../../components/TipsRow';
+import TipsRow from '../../../components/TipsRow';
 import { ScrollView } from 'react-native-gesture-handler';
 
 
@@ -23,7 +23,7 @@ class Tips extends React.Component{
 const styles = StyleSheet.create({
     master: {
        flex: 1,
-       backgroundColor: colors.neutral
+    //    backgroundColor: colors.neutral
     }
 });
 export default Tips;

@@ -58,6 +58,7 @@ export default StyleSheet.create({
   listItems: {
     ...fonts.h3_thin,
     flex: 1,
+    fontSize: 17,
     padding: 10,
   },
   horizon: {

@@ -1,45 +1,40 @@
 import React from 'react';
-import { View, Text, StyleSheet, StatusBar, TouchableOpacity} from 'react-native';
+import { View, Text, StyleSheet, StatusBar, TouchableOpacity } from 'react-native';
 import colors from "../assets/colors";
 import Icon from 'react-native-vector-icons/Ionicons';
 import fonts from "../assets/fonts";
+import { heightPercentageToDP } from 'react-native-responsive-screen';
+import dimen from '../assets/dimen';
 
-class HeaderSearch extends React.Component{
-   render(){
-       return(
-           <View style={styles.title}>
-                <StatusBar backgroundColor={colors.primary1} barStyle="light-content" />
-                   <TouchableOpacity style={styles.arrow}>
-                    <Icon name='md-arrow-back' size={19} color='black' />
-                   </TouchableOpacity>
-                <View style={styles.textMain}>
-                <Text style={fonts.h2}>atorvastanin</Text>
-                <Text style={fonts.h3}>40 mg, 90 tablets</Text>
+class HeaderSearch extends React.Component {
+    render() {
+        return (
+            <View style={styles.title}>
+                <View style={{ flexDirection: 'row', marginTop: heightPercentageToDP('6%') }}>
+                    <StatusBar backgroundColor='white' barStyle="dark-content" />
+                    <TouchableOpacity onPress={this.props.onBack} style={styles.arrow}>
+                        <Icon name='md-arrow-back' size={22} color='black' />
+                    </TouchableOpacity>
+                    <Text style={styles.head}>Medicine Details</Text>
                 </View>
-                <TouchableOpacity style={styles.edit}>
-                    <Icon name='md-create' size={19} color='black' />
-                   </TouchableOpacity>
-                   <TouchableOpacity style={styles.search}>
-                    <Icon name='md-search' size={19} color='black' />
-                   </TouchableOpacity>
-           </View>
-       );
-   }
+            </View>
+        );
+    }
 }
 
 const styles = StyleSheet.create({
     title: {
-        flexDirection: 'row',
-        backgroundColor: colors.text3,
-        height: 60
-    },
-    textMain: {
-        padding: 10
+        // flexDirection: 'row',
     },
     arrow: {
-      alignSelf: 'center',
-      paddingStart: 20,
-      paddingEnd: 20  
+        alignSelf: 'center',
+        paddingStart: 20,
+        paddingEnd: 20,
+    },
+    head: {
+        ...fonts.extraLarge,
+        alignSelf: 'center',
+        justifyContent: 'center',
     },
     edit: {
         alignSelf: 'center',
@@ -50,7 +45,8 @@ const styles = StyleSheet.create({
     search: {
         alignSelf: 'center',
         paddingStart: 10,
-        paddingEnd: 20   
+        paddingEnd: 20
     }
 });
+
 export default HeaderSearch;

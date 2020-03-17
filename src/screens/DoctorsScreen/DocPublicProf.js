@@ -34,7 +34,8 @@ class DocPublicProf extends React.Component {
 
         const { navigation } = this.props;
         const { docName } = this.props.route.params;
-        const { now } = this.props.consultNow;
+        const  now  = this.props.consultNow;
+        console.log(now)
         const { screen } = now ? 'Visit' : 'ConsultOptions';
 
         let btnText = now ? 'VISIT NOW' : 'CONSULT';

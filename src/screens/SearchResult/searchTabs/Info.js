@@ -1,9 +1,9 @@
 import React from 'react';
 import { View, Text, StyleSheet, StatusBar, TouchableOpacity, ToastAndroid} from 'react-native';
-import colors from "../../assets/colors";
-import InfoList from '../../components/InfoList';
+import colors from "../../../assets/colors";
+import InfoList from '../../../components/InfoList';
 import { ScrollView } from 'react-native-gesture-handler';
-import fonts from '../../assets/fonts';
+import fonts from '../../../assets/fonts';
 
 class Info extends React.Component{
 

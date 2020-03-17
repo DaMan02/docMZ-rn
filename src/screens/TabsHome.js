@@ -31,13 +31,13 @@ class TabsHome extends React.Component {
               }else if (route.name === 'Profile') {
                 iconName = 'person';
               }
-              return <Icon name={iconName} size={24} color={focused ? colors.primary1 : colors.text3} />;
+              return <Icon name={iconName} size={20} color={focused ? colors.primary1 : colors.shadow} />;
             },
           })}
-          tabBarOptions={{
-            activeTintColor: colors.primary1,
-            inactiveTintColor: 'gray',
-          }}
+          // tabBarOptions={{
+          //   activeTintColor: 'colors.primary1',
+          //   inactiveTintColor: colors.darkgray,
+          // }}
           barStyle={{ backgroundColor: 'white' }}
         >
           <Tab.Screen name="Search" component={SearchScreen} />           

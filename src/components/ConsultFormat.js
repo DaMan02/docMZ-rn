@@ -8,7 +8,7 @@ import { heightPercentageToDP } from 'react-native-responsive-screen';
 // props
 
 const ConsultFormat = (props) => (
-    <TouchableOpacity activeOpacity={0.7} style={styles.main}>
+    <TouchableOpacity activeOpacity={0.7} style={styles.main} onPress={props.onPress}>
         <View style={{...styles.iconMain, backgroundColor: props.bg }}>
             <Icon style={styles.icon} name={props.icon} size={20} color='white' />
         </View>

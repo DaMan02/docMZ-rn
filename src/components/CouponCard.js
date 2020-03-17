@@ -13,7 +13,7 @@ const CouponCard = (props) => (
       </View>
       <TouchableOpacity activeOpacity={0.6} style={styles.coupon} onPress={props.onPress}>
            <Text style={{...styles.sub, alignSelf: 'center'}}>Coupon</Text>
-           <Text style={fonts.large}>$ {props.price}</Text>
+           <Text style={fonts.large}>₹ {props.price}</Text>
       </TouchableOpacity>
     </View>
 );

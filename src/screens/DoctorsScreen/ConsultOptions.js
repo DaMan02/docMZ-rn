@@ -10,8 +10,6 @@ import colors from '../../assets/colors';
 import dimen from '../../assets/dimen';
 import ConsultFormat from '../../components/ConsultFormat';
 
-const ms = wp('10%');
-
 class ConsultOptions extends React.Component {
 
     backAction = () => {
@@ -38,7 +36,8 @@ class ConsultOptions extends React.Component {
                 <View style={styles.scroll}>
                     <ConsultFormat title='Chat' sub='When you are just busy to talk' bg='#54E5DF' icon='chat' />
                     <ConsultFormat title='Video' sub='Face to face online video call' bg='#F09E62' icon='video'/>
-                    <ConsultFormat title='Appointment' sub='Book an appointment to visit personally' bg='#C17BE8' icon='calendar'/>
+                    <ConsultFormat onPress={() => navigation.navigate('Visit')}
+                    title='Appointment' sub='Book an appointment to visit personally' bg='#C17BE8' icon='calendar'/>
                  </View>
                 </ScrollView>
         )
