@@ -5,7 +5,8 @@ import {
   ScrollView,
   ActivityIndicator,
   StyleSheet,
-  TextInput
+  TextInput,
+  BackHandler
 } from 'react-native';
 import {
   widthPercentageToDP as wp,
@@ -27,7 +28,17 @@ class DoctorSearch extends Component {
     isLoading: true,
   };
 
+  backAction = () => {
+    this.props.navigation.goBack()
+    return true;
+  };
+
+  componentWillUnmount() {
+    BackHandler.removeEventListener("hardwareBackPress", this.backAction);
+  }
+
   async componentDidMount() {
+    BackHandler.addEventListener("hardwareBackPress", this.backAction);
     try {
       let doctorList = await Axios.post(Api.doctors + Api.getDoctors);
       let specialityList = await Axios.get(Api.doctors + Api.getSpecialities);
@@ -58,7 +69,7 @@ class DoctorSearch extends Component {
             style={styles.searchbar}
             onChangeText={text => this.onChangeText(text)}
             value={this.props.search}
-            placeholder='Search   '
+            placeholder='Search doctors'
           />
         </View>
         <ScrollView>
@@ -144,6 +155,11 @@ const styles = StyleSheet.create({
     marginBottom: 14,
     marginTop: hp('1%')
   },
+  searchbar: {
+    height: 46,
+    marginStart: 10,
+    paddingEnd: 130
+  },
   scroll: {
     justifyContent: 'center',
     alignItems: 'center',
@@ -153,7 +169,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     paddingStart: 14,
-    paddingEnd: 14,
+    paddingEnd: 24,
     marginStart: 28,
     marginEnd: 16,
     marginTop: hp('4%'),

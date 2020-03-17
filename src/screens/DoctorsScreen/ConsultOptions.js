@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, StyleSheet, Image } from 'react-native';
+import { View, Text, StyleSheet, Image, BackHandler } from 'react-native';
 import fonts from '../../assets/fonts';
 import {
     widthPercentageToDP as wp,
@@ -13,6 +13,19 @@ import ConsultFormat from '../../components/ConsultFormat';
 const ms = wp('10%');
 
 class ConsultOptions extends React.Component {
+
+    backAction = () => {
+        this.props.navigation.goBack()
+        return true;
+    };
+
+    componentWillUnmount() {
+        BackHandler.removeEventListener("hardwareBackPress", this.backAction);
+    }
+
+    componentDidMount() {
+        BackHandler.addEventListener("hardwareBackPress", this.backAction);
+    }
 
     render() {
         const { navigation } = this.props;

@@ -6,7 +6,8 @@ const initialState = {
   toggle5: false,
   search: '',
   load: false,
-  isDoctor: true
+  isDoctor: true,
+  consultNow: true
 };
 
 const reducer = (state = initialState, action) => {
@@ -50,6 +51,11 @@ const reducer = (state = initialState, action) => {
       return {
         ...state,
         isDoctor: !state.isDoctor
+      };
+    case 'TOGGLE_CONSULT_TIME':
+      return {
+        ...state,
+        consultNow: action.consultNow
       };
     default:
       return state;

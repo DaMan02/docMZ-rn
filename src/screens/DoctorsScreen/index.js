@@ -5,6 +5,8 @@ import DoctorSearch from './DoctorSearch';
 import ConsultOptions from './ConsultOptions';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
+import Visit from './Visit';
+
 
 const Stack = createStackNavigator();
 
@@ -22,6 +24,7 @@ class DoctorScreen extends Component {
                   <Stack.Screen name="DocPublicProf" component={DocPublicProf} />
                   <Stack.Screen name="DoctorSearch" component={DoctorSearch} />
                   <Stack.Screen name="ConsultOptions" component={ConsultOptions} />
+                  <Stack.Screen name="Visit" component={Visit} />
               </Stack.Navigator>
           </NavigationContainer>
         );
