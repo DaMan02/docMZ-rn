@@ -8,6 +8,7 @@ import DoctorsScreen from './DoctorsScreen';
 import ProfileScreen from './ProfileScreen';
 import SearchScreen from './SearchScreen';
 import colors from '../assets/colors';
+import { StatusBar } from 'react-native'
 
 const Tab = createMaterialBottomTabNavigator();
 
@@ -15,6 +16,7 @@ class TabsHome extends React.Component {
   render() {
     return (
       <NavigationContainer independent={true}>
+        <StatusBar backgroundColor='white' barStyle="dark-content" />
         <Tab.Navigator
           initialRouteName="Doctors"
           screenOptions={({ route }) => ({

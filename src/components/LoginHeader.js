@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, StyleSheet, Image } from 'react-native';
+import { View, Text, StyleSheet, Image, StatusBar } from 'react-native';
 import colors from "../assets/colors";
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import Icon from 'react-native-vector-icons/Ionicons';
@@ -13,6 +13,7 @@ import {
 
 const LoginHeader = (props) => (
     <View style={styles.curve}>
+         <StatusBar backgroundColor={colors.primary1} barStyle="light-content" />
         <Text style={styles.title}>{props.title}</Text>
     </View>
 );
