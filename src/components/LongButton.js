@@ -6,7 +6,7 @@ import {
     heightPercentageToDP as hp,
 } from 'react-native-responsive-screen';
 
-// props: backgroundColor, text, textColor, border, radius, onPress
+// props: backgroundColor, text, textColor, onPress
 
 const LongButton = (props) => (
     <View  

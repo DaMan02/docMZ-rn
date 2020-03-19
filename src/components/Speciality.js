@@ -6,51 +6,68 @@ import {
     widthPercentageToDP as wp,
     heightPercentageToDP as hp,
 } from 'react-native-responsive-screen';
+import Icon from 'react-native-vector-icons/FontAwesome'
 
 // props: title, uri
 
+function renderCheck(show) {
+    if(show)
+    return (
+        <View style={styles.icon}>
+            <Icon name='check' size={12} color='white' />
+        </View>
+    )
+}
+
 const Speciality = (props) => (
-    <TouchableOpacity activeOpacity={0.7} onPress={props.onPress} style={{ ...styles.main, backgroundColor: props.light }}>
-        <View style={{...styles.img, borderColor: props.dark, backgroundColor: props.dark}}>
+    <TouchableOpacity activeOpacity={0.7} onPress={props.onPress} style={styles.main}>
+        {renderCheck(props.pressed)}
+        <View>
             <Image source={props.uri}
                 style={styles.image} />
         </View>
-        <Text style={{...styles.title, color: props.dark}}>{props.title}</Text>
+        <Text style={styles.title}>{props.title}</Text>
     </TouchableOpacity>
 );
 
 const styles = StyleSheet.create({
     main: {
-        borderRadius: 16,
+        borderRadius: 20,
         width: wp('34%'),
         marginStart: 6,
         marginEnd: 6,
-        height: hp('30%'),
-        elevation: 1,
-        marginBottom: 1
+        height: hp('26%'),
+        elevation: 2,
+        marginBottom: 1,
+        flex: 1,
+        backgroundColor: 'white',
+        justifyContent: 'center'   // todo: after change in api
     },
-    img: {
-        height: 40,
-        width: 50,
-        borderRadius: 10,
-        borderWidth: 1,
+    icon: {
+        position: 'absolute',
+        top: hp('2%'),
+        right: 10,
         justifyContent: 'center',
-        alignSelf: 'center',
-        marginTop: 6
+        backgroundColor: colors.primary2,
+        height: 22,
+        alignItems: 'center',
+        width: 22,
+        borderRadius: 50
     },
     image: {
         alignSelf: 'center',
         resizeMode: 'contain',
-        width: 50,
-        height: 50,
+        width: 64,
+        height: 64,
+        // marginTop: hp('3%')  // todo: comment, 
     },
     title: {
-        ...fonts.h4,
-        marginTop: 2,
-        padding: 6,
-        marginStart: 10,
-        marginEnd: 10,
-        marginBottom: 8
+        ...fonts.para,
+        marginStart: 1,
+        marginEnd: 1,
+        justifyContent: 'flex-end',
+        textAlign: 'center',
+        marginTop: hp('4%')
     }
 });
 

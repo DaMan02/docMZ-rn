@@ -6,48 +6,96 @@ import {
     widthPercentageToDP as wp,
     heightPercentageToDP as hp,
 } from 'react-native-responsive-screen';
-import Rating from './Rating';
 
 // props: title, uri
 
+function renderAvail(props) {
+    if (props.avail > 0) {
+        return (
+            <Text style={styles.avail}>available in {props.avail} min</Text>
+        )
+    }
+    else {
+        return (
+            <View style={styles.button}>
+                <TouchableOpacity activeOpacity={0.6} onPress={props.onPress}
+                    style={{ ...styles.buttonContainer, width: 76, height: 34 }}>
+                    <View >
+                        <Text style={{ ...fonts.para, color: 'white' }}>Visit</Text>
+                    </View>
+                </TouchableOpacity>
+            </View>
+        )
+    }
+}
+
 const DoctorPreview = (props) => (
-    <TouchableOpacity activeOpacity={0.7} onPress={props.onPress} style={{ ...styles.main, backgroundColor: props.bg }}>
+    <TouchableOpacity activeOpacity={0.8} style={styles.main}>
         <View style={styles.dp}>
-            <Image source={require('../assets/images/doc.jpg')}
+            <Image source={require('../assets/images/doc.png')}
                 style={styles.image} />
         </View>
-        <View>
+        <View style={{ justifyContent: 'center', paddingTop: 8, marginBottom: 8 }}>
             <Text style={styles.title}>Dr. {props.name}</Text>
-            <Text style={styles.org}>{props.org}</Text>
             <Text style={styles.spec}>{props.spec}</Text>
+            <Text style={styles.loc}>{props.loc}</Text>
         </View>
-        {/* <Rating rate={props.rating} /> */}
-    </TouchableOpacity>
+        { renderAvail(props) }
+    </TouchableOpacity >
 );
 
 const styles = StyleSheet.create({
     main: {
-        borderRadius: 16,
-        marginStart: 20,
-        marginEnd: 20,
-        height: hp('16%'),
-        elevation: 3,
-        marginBottom: 16,
-        flexDirection: 'row'
+        elevation: 0.2,
+        marginBottom: 4,
+        flexDirection: 'row',
+        backgroundColor: 'white',
+    },
+    buttonContainer: {
+        justifyContent: 'center',
+        alignItems: 'center',
+        borderRadius: 28,
+        elevation: 2,
+        backgroundColor: colors.button
     },
     dp: {
         alignSelf: 'center',
         alignItems: 'center',
         marginStart: 10
     },
+    button: {
+        position: 'absolute',
+        top: 44,
+        right: 16
+    },
+    loc: {
+        ...fonts.para_thin,
+        color: colors.darkgray,
+        marginStart: 12,
+        padding: 4,
+    },
     title: {
         ...fonts.h2,
-        marginTop: 20,
-        marginStart: 16,
+        marginStart: 12,
+        padding: 4,
+        maxWidth: wp('52%')
     },
-    org: {
+    avail: {
         ...fonts.para,
-        marginStart: 16
+        position: 'absolute',
+        top: 44,
+        right: 16,
+        color: colors.greenblue,
+    },
+    spec: {
+        ...fonts.para,
+        marginStart: 12,
+        padding: 4,
+        borderRadius: 4,
+        paddingStart: 8,
+        paddingEnd: 8,
+        alignSelf: 'baseline',
+        backgroundColor: colors.lightGray
     },
     image: {
         alignSelf: 'center',

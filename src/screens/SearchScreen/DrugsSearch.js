@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, TextInput, TouchableOpacity, ToastAndroid, ActivityIndicator } from 'react-native';
+import { View, Text, TextInput, TouchableOpacity, ToastAndroid, ActivityIndicator, BackHandler } from 'react-native';
 import colors from '../../assets/colors';
 import Icon from 'react-native-vector-icons/Ionicons';
 import { connect } from 'react-redux';
@@ -18,6 +18,18 @@ import HealthConcern from '../../components/HealthConcern';
 
 class DrugsSearch extends React.Component {
 
+  backAction = () => {
+    
+    return true;
+  };
+
+  componentWillUnmount() {
+    BackHandler.removeEventListener("hardwareBackPress", this.backAction);
+  }
+
+  componentDidMount() {
+    BackHandler.addEventListener("hardwareBackPress", this.backAction);
+  }
   state = {
     dataSource: [],
     displayData: [],
@@ -25,7 +37,7 @@ class DrugsSearch extends React.Component {
   }
 
   async componentDidMount() {
-    const data = await medsDemo.Medicine_Details;
+    const data = await meds.Medicine_Details;
     this.setState({ dataSource: data })
   }
 
@@ -54,7 +66,7 @@ class DrugsSearch extends React.Component {
     this.setState({ displayData: data });
   }
 
-  isEmpty(){
+  isEmpty() {
     return !this.state.displayData.length > 0
   }
 
@@ -83,37 +95,36 @@ class DrugsSearch extends React.Component {
       )
   }
 
-  onListPress(item){
-      console.log('clicked')
-      this.props.navigation.navigate('SearchResult',
+  onListPress(item) {
+    this.props.navigation.navigate('SearchResult',
       { 'med': item })
   }
 
   renderMain() {
-    if(this.isEmpty())
-    return (
-      <View>
-        <Text style={{ ...fonts.h2, width: wp('50%'), marginStart: 20, padding: 10, marginBottom: 8, marginTop: hp('1%') }}>Choose a category</Text>
-        <ScrollView style={styles.horizon} horizontal showsHorizontalScrollIndicator={false}>
-          <IllnessCard title='Cough & Cold' uri={require('../../assets/images/cough.png')} bg='#FAB0C5' />
-          <IllnessCard title='Diabets Care ' uri={require('../../assets/images/diabets.png')} bg='#FFB299' />
-          <IllnessCard title='Heart Health' uri={require('../../assets/images/heart.png')} bg='#FF7575' />
-          <IllnessCard title='Cough & Cold' uri={require('../../assets/images/cough.png')} bg='#FAB0C5' />
-          <IllnessCard title='Diabets Care ' uri={require('../../assets/images/diabets.png')} bg='#FFB299' />
-          <IllnessCard title='Heart Health' uri={require('../../assets/images/heart.png')} bg='#FF7575' />
-          <View style={{ width: wp('10%') }}></View>
-        </ScrollView>
-        <Text style={{ ...fonts.h2, marginStart: 20, padding: 10, marginBottom: 6, marginTop: 10 }}>Search by health concern</Text>
-        <ScrollView style={styles.horizon} horizontal showsHorizontalScrollIndicator={false}>
-          <HealthConcern title='General Doctor' icon='stethoscope' bg='#8CF1FF' />
-          <HealthConcern title='Dental Care' icon='tooth' bg='#FAB0C5' />
-          <HealthConcern title='General Doctor' icon='stethoscope' bg='#8CF1FF' />
-          <HealthConcern title='Dental Care' icon='tooth' bg='#FAB0C5' />
-          <View style={{ width: wp('3%') }}></View>
-        </ScrollView>
-        <View style={{ height: hp('5%') }}></View>
-      </View>
-    )
+    if (this.isEmpty())
+      return (
+        <View>
+          <Text style={{ ...fonts.h2, width: wp('50%'), marginStart: 20, padding: 10, marginBottom: 8, marginTop: hp('1%') }}>Choose a category</Text>
+          <ScrollView style={styles.horizon} horizontal showsHorizontalScrollIndicator={false}>
+            <IllnessCard title='Cough & Cold' uri={require('../../assets/images/cough.png')} bg='#FAB0C5' />
+            <IllnessCard title='Diabets Care ' uri={require('../../assets/images/diabets.png')} bg='#FFB299' />
+            <IllnessCard title='Heart Health' uri={require('../../assets/images/heart.png')} bg='#FF7575' />
+            <IllnessCard title='Cough & Cold' uri={require('../../assets/images/cough.png')} bg='#FAB0C5' />
+            <IllnessCard title='Diabets Care ' uri={require('../../assets/images/diabets.png')} bg='#FFB299' />
+            <IllnessCard title='Heart Health' uri={require('../../assets/images/heart.png')} bg='#FF7575' />
+            <View style={{ width: wp('10%') }}></View>
+          </ScrollView>
+          <Text style={{ ...fonts.h2, marginStart: 20, padding: 10, marginBottom: 6, marginTop: 10 }}>Search by health concern</Text>
+          <ScrollView style={styles.horizon} horizontal showsHorizontalScrollIndicator={false}>
+            <HealthConcern title='General Doctor' icon='stethoscope' bg='#8CF1FF' />
+            <HealthConcern title='Dental Care' icon='tooth' bg='#FAB0C5' />
+            <HealthConcern title='General Doctor' icon='stethoscope' bg='#8CF1FF' />
+            <HealthConcern title='Dental Care' icon='tooth' bg='#FAB0C5' />
+            <View style={{ width: wp('3%') }}></View>
+          </ScrollView>
+          <View style={{ height: hp('5%') }}></View>
+        </View>
+      )
   }
 
   renderSearch() {
@@ -146,14 +157,14 @@ class DrugsSearch extends React.Component {
   }
 
   renderList() {
-    if(!this.isEmpty())
-    return this.state.displayData.map(item =>
-      <TouchableOpacity activeOpacity={0.6}
-        key={item.salt_name} style={styles.list}
-        onPress={() => this.onListPress(item)}>
-        {this.renderItemRow(item)}
-      </TouchableOpacity>
-    );
+    if (!this.isEmpty())
+      return this.state.displayData.map(item =>
+        <TouchableOpacity activeOpacity={0.6}
+          key={item.salt_name} style={styles.list}
+          onPress={() => this.onListPress(item)}>
+          {this.renderItemRow(item)}
+        </TouchableOpacity>
+      );
   }
 
   render() {

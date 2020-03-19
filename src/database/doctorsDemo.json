@@ -1,0 +1,724 @@
+{
+    "doctor_details": [
+        {   "id": 1,
+            "name": "Burgess Alan",
+            "speciality": "Eye Doctor",
+            "rating": "4.6",
+            "exp": "10",
+            "fee": "80",
+            "about": "They said to me, 'Make us gods who will go before us. As for this fellow Moses who brought us up out of Egypt, we don't know what has happened to him.'",
+            "available_in_min": 28,
+            "location": {
+                "city": "New York",
+                "country": "United States",
+                "street": "446 Walt Whitman Marietta"
+            },
+            "slots": [
+                {
+                    "date": "2020-03-19",
+                    "no": 3,
+                    "timings": [
+                        "12:30 PM",
+                        "01:00 PM",
+                        "04:00 PM"
+                    ]
+                },
+                {
+                    "date": "2020-03-20",
+                    "no": 0,
+                    "timings": []
+                },
+                {
+                    "date": "2020-03-21",
+                    "no": 4,
+                    "timings": [
+                        "11:30 AM",
+                        "01:00 PM",
+                        "03:30 PM",
+                        "08:30 PM",
+                    ]
+                },
+                {
+                    "date": "2020-03-22",
+                    "no": 2,
+                    "timings": [
+                        "12:0 AM",
+                        "05:40 PM"
+                    ]
+                },
+            ]
+        },
+        {   "id": 2,
+            "name": "Co Edward",
+            "speciality": "Dentist",
+            "rating": "4.8",
+            "exp": "7",
+            "fee": "74",
+            "about": "I will tear off your veils and save my people from your hands, and they will no longer fall prey to your power. Then you will know that I am the LORD.",
+            "available_in_min": 0,
+            "location": {
+                "city": "Texas",
+                "country": "United States",
+                "street": "327 Baker Court Allen Park"
+            },
+            "slots": [
+                {
+                    "date": "2020-03-19",
+                    "no": 3,
+                    "timings": [
+                        "12:30 PM",
+                        "01:00 PM",
+                        "04:00 PM"
+                    ]
+                },
+                {
+                    "date": "2020-03-20",
+                    "no": 0,
+                    "timings": []
+                },
+                {
+                    "date": "2020-03-21",
+                    "no": 4,
+                    "timings": [
+                        "11:30 AM",
+                        "01:00 PM",
+                        "03:30 PM",
+                        "08:30 PM",
+                    ]
+                },
+                {
+                    "date": "2020-03-22",
+                    "no": 2,
+                    "timings": [
+                        "12:0 AM",
+                        "05:40 PM"
+                    ]
+                },
+            ]
+        },
+        {   "id": 3,
+            "name": "Bethany Dean",
+            "speciality": "Dermatologist",
+            "rating": "4.4",
+            "exp": "8",
+            "fee": "90",
+            "about": "Terrified at her torment, they will stand far off and cry: Woe! Woe to you, great city, you mighty city of Babylon! In one hour your doom has come!",
+            "available_in_min": 45,
+            "location": {
+                "city": "California",
+                "country": "United States",
+                "street": "849 Longfellow Street Crawfordsville"
+            },
+            "slots": [
+                {
+                    "date": "2020-03-19",
+                    "no": 3,
+                    "timings": [
+                        "12:30 PM",
+                        "01:00 PM",
+                        "04:00 PM"
+                    ]
+                },
+                {
+                    "date": "2020-03-20",
+                    "no": 0,
+                    "timings": []
+                },
+                {
+                    "date": "2020-03-21",
+                    "no": 4,
+                    "timings": [
+                        "11:30 AM",
+                        "01:00 PM",
+                        "03:30 PM",
+                        "08:30 PM",
+                    ]
+                },
+                {
+                    "date": "2020-03-22",
+                    "no": 2,
+                    "timings": [
+                        "12:0 AM",
+                        "05:40 PM"
+                    ]
+                },
+            ]
+        },
+        {   "id": 4,
+            "name": "Brendan Simmons",
+            "speciality": "Pediatrician",
+            "rating": "4.2",
+            "exp": "12",
+            "fee": "65",
+            "about": "When they heard this, they praised God. Then they said to Paul: You see, brother, how many thousands of Jews have believed, and all of them are zealous for the law.",
+            "available_in_min": 0,
+            "location": {
+                "city": "Florida",
+                "country": "United States",
+                "street": "246 Campfire Street Palm Beach Gardens"
+            },
+            "slots": [
+                {
+                    "date": "2020-03-19",
+                    "no": 0,
+                    "timings": []
+                },
+                {
+                    "date": "2020-03-20",
+                    "no": 3,
+                    "timings": [
+                        "12:30 PM",
+                        "01:00 PM",
+                        "04:00 PM"
+                    ]
+                },
+                {
+                    "date": "2020-03-21",
+                    "no": 4,
+                    "timings": [
+                        "11:30 AM",
+                        "01:00 PM",
+                        "03:30 PM",
+                        "08:30 PM",
+                    ]
+                },
+                {
+                    "date": "2020-03-22",
+                    "no": 2,
+                    "timings": [
+                        "12:0 AM",
+                        "05:40 PM"
+                    ]
+                },
+            ]
+        },
+        {   "id": 5,
+            "name": "Shelia Page",
+            "speciality": "Ophthalmologist",
+            "rating": "4.8",
+            "exp": "21",
+            "fee": "70",
+            "about": "And there before me was the glory of the God of Israel, as in the vision I had seen in the plain.",
+            "available_in_min": 10,
+            "location": {
+                "city": "New York",
+                "country": "United States",
+                "street": "300 Woodside Street Chippewa Falls"
+            },
+            "slots": [
+                {
+                    "date": "2020-03-19",
+                    "no": 3,
+                    "timings": [
+                        "12:30 PM",
+                        "01:00 PM",
+                        "04:00 PM"
+                    ]
+                },
+                {
+                    "date": "2020-03-20",
+                    "no": 0,
+                    "timings": []
+                },
+                {
+                    "date": "2020-03-21",
+                    "no": 4,
+                    "timings": [
+                        "11:30 AM",
+                        "01:00 PM",
+                        "03:30 PM",
+                        "08:30 PM",
+                    ]
+                },
+                {
+                    "date": "2020-03-22",
+                    "no": 2,
+                    "timings": [
+                        "12:0 AM",
+                        "05:40 PM"
+                    ]
+                },
+            ]
+        },
+        {   "id": 6,
+            "name": "Burgess Alan",
+            "speciality": "Eye Doctor",
+            "rating": "4.6",
+            "exp": "10",
+            "fee": "80",
+            "about": "They said to me, 'Make us gods who will go before us. As for this fellow Moses who brought us up out of Egypt, we don't know what has happened to him.'",
+            "available_in_min": 28,
+            "location": {
+                "city": "New York",
+                "country": "United States",
+                "street": "446 Walt Whitman Marietta"
+            },
+            "slots": [
+                {
+                    "date": "2020-03-19",
+                    "no": 3,
+                    "timings": [
+                        "12:30 PM",
+                        "01:00 PM",
+                        "04:00 PM"
+                    ]
+                },
+                {
+                    "date": "2020-03-20",
+                    "no": 0,
+                    "timings": []
+                },
+                {
+                    "date": "2020-03-21",
+                    "no": 4,
+                    "timings": [
+                        "11:30 AM",
+                        "01:00 PM",
+                        "03:30 PM",
+                        "08:30 PM",
+                    ]
+                },
+                {
+                    "date": "2020-03-22",
+                    "no": 2,
+                    "timings": [
+                        "12:0 AM",
+                        "05:40 PM"
+                    ]
+                },
+            ]
+        },
+        {   "id": 7,
+            "name": "Co Edward",
+            "speciality": "Dentist",
+            "rating": "4.8",
+            "exp": "7",
+            "fee": "74",
+            "about": "I will tear off your veils and save my people from your hands, and they will no longer fall prey to your power. Then you will know that I am the LORD.",
+            "available_in_min": 0,
+            "location": {
+                "city": "Texas",
+                "country": "United States",
+                "street": "327 Baker Court Allen Park"
+            },
+            "slots": [
+                {
+                    "date": "2020-03-19",
+                    "no": 3,
+                    "timings": [
+                        "12:30 PM",
+                        "01:00 PM",
+                        "04:00 PM"
+                    ]
+                },
+                {
+                    "date": "2020-03-20",
+                    "no": 0,
+                    "timings": []
+                },
+                {
+                    "date": "2020-03-21",
+                    "no": 4,
+                    "timings": [
+                        "11:30 AM",
+                        "01:00 PM",
+                        "03:30 PM",
+                        "08:30 PM",
+                    ]
+                },
+                {
+                    "date": "2020-03-22",
+                    "no": 2,
+                    "timings": [
+                        "12:0 AM",
+                        "05:40 PM"
+                    ]
+                },
+            ]
+        },
+        {   "id": 8,
+            "name": "Bethany Dean",
+            "speciality": "Dermatologist",
+            "rating": "4.4",
+            "exp": "8",
+            "fee": "90",
+            "about": "Terrified at her torment, they will stand far off and cry: Woe! Woe to you, great city, you mighty city of Babylon! In one hour your doom has come!",
+            "available_in_min": 45,
+            "location": {
+                "city": "California",
+                "country": "United States",
+                "street": "849 Longfellow Street Crawfordsville"
+            },
+            "slots": [
+                {
+                    "date": "2020-03-19",
+                    "no": 3,
+                    "timings": [
+                        "12:30 PM",
+                        "01:00 PM",
+                        "04:00 PM"
+                    ]
+                },
+                {
+                    "date": "2020-03-20",
+                    "no": 0,
+                    "timings": []
+                },
+                {
+                    "date": "2020-03-21",
+                    "no": 4,
+                    "timings": [
+                        "11:30 AM",
+                        "01:00 PM",
+                        "03:30 PM",
+                        "08:30 PM",
+                    ]
+                },
+                {
+                    "date": "2020-03-22",
+                    "no": 2,
+                    "timings": [
+                        "12:0 AM",
+                        "05:40 PM"
+                    ]
+                },
+            ]
+        },
+        {   "id": 9,
+            "name": "Brendan Simmons",
+            "speciality": "Pediatrician",
+            "rating": "4.2",
+            "exp": "12",
+            "fee": "65",
+            "about": "When they heard this, they praised God. Then they said to Paul: You see, brother, how many thousands of Jews have believed, and all of them are zealous for the law.",
+            "available_in_min": 0,
+            "location": {
+                "city": "Florida",
+                "country": "United States",
+                "street": "246 Campfire Street Palm Beach Gardens"
+            },
+            "slots": [
+                {
+                    "date": "2020-03-19",
+                    "no": 0,
+                    "timings": []
+                },
+                {
+                    "date": "2020-03-20",
+                    "no": 3,
+                    "timings": [
+                        "12:30 PM",
+                        "01:00 PM",
+                        "04:00 PM"
+                    ]
+                },
+                {
+                    "date": "2020-03-21",
+                    "no": 4,
+                    "timings": [
+                        "11:30 AM",
+                        "01:00 PM",
+                        "03:30 PM",
+                        "08:30 PM",
+                    ]
+                },
+                {
+                    "date": "2020-03-22",
+                    "no": 2,
+                    "timings": [
+                        "12:0 AM",
+                        "05:40 PM"
+                    ]
+                },
+            ]
+        },
+        {   "id": 10,
+            "name": "Shelia Page",
+            "speciality": "Ophthalmologist",
+            "rating": "4.8",
+            "exp": "21",
+            "fee": "70",
+            "about": "And there before me was the glory of the God of Israel, as in the vision I had seen in the plain.",
+            "available_in_min": 10,
+            "location": {
+                "city": "New York",
+                "country": "United States",
+                "street": "300 Woodside Street Chippewa Falls"
+            },
+            "slots": [
+                {
+                    "date": "2020-03-19",
+                    "no": 3,
+                    "timings": [
+                        "12:30 PM",
+                        "01:00 PM",
+                        "04:00 PM"
+                    ]
+                },
+                {
+                    "date": "2020-03-20",
+                    "no": 0,
+                    "timings": []
+                },
+                {
+                    "date": "2020-03-21",
+                    "no": 4,
+                    "timings": [
+                        "11:30 AM",
+                        "01:00 PM",
+                        "03:30 PM",
+                        "08:30 PM",
+                    ]
+                },
+                {
+                    "date": "2020-03-22",
+                    "no": 2,
+                    "timings": [
+                        "12:0 AM",
+                        "05:40 PM"
+                    ]
+                },
+            ]
+        },
+        {   "id": 11,
+            "name": "Burgess Alan",
+            "speciality": "Eye Doctor",
+            "rating": "4.6",
+            "exp": "10",
+            "fee": "80",
+            "about": "They said to me, 'Make us gods who will go before us. As for this fellow Moses who brought us up out of Egypt, we don't know what has happened to him.'",
+            "available_in_min": 28,
+            "location": {
+                "city": "New York",
+                "country": "United States",
+                "street": "446 Walt Whitman Marietta"
+            },
+            "slots": [
+                {
+                    "date": "2020-03-19",
+                    "no": 3,
+                    "timings": [
+                        "12:30 PM",
+                        "01:00 PM",
+                        "04:00 PM"
+                    ]
+                },
+                {
+                    "date": "2020-03-20",
+                    "no": 0,
+                    "timings": []
+                },
+                {
+                    "date": "2020-03-21",
+                    "no": 4,
+                    "timings": [
+                        "11:30 AM",
+                        "01:00 PM",
+                        "03:30 PM",
+                        "08:30 PM",
+                    ]
+                },
+                {
+                    "date": "2020-03-22",
+                    "no": 2,
+                    "timings": [
+                        "12:0 AM",
+                        "05:40 PM"
+                    ]
+                },
+            ]
+        },
+        {   "id": 12,
+            "name": "Co Edward",
+            "speciality": "Dentist",
+            "rating": "4.8",
+            "exp": "7",
+            "fee": "74",
+            "about": "I will tear off your veils and save my people from your hands, and they will no longer fall prey to your power. Then you will know that I am the LORD.",
+            "available_in_min": 0,
+            "location": {
+                "city": "Texas",
+                "country": "United States",
+                "street": "327 Baker Court Allen Park"
+            },
+            "slots": [
+                {
+                    "date": "2020-03-19",
+                    "no": 3,
+                    "timings": [
+                        "12:30 PM",
+                        "01:00 PM",
+                        "04:00 PM"
+                    ]
+                },
+                {
+                    "date": "2020-03-20",
+                    "no": 0,
+                    "timings": []
+                },
+                {
+                    "date": "2020-03-21",
+                    "no": 4,
+                    "timings": [
+                        "11:30 AM",
+                        "01:00 PM",
+                        "03:30 PM",
+                        "08:30 PM",
+                    ]
+                },
+                {
+                    "date": "2020-03-22",
+                    "no": 2,
+                    "timings": [
+                        "12:0 AM",
+                        "05:40 PM"
+                    ]
+                },
+            ]
+        },
+        {   "id": 13,
+            "name": "Bethany Dean",
+            "speciality": "Dermatologist",
+            "rating": "4.4",
+            "exp": "8",
+            "fee": "90",
+            "about": "Terrified at her torment, they will stand far off and cry: Woe! Woe to you, great city, you mighty city of Babylon! In one hour your doom has come!",
+            "available_in_min": 45,
+            "location": {
+                "city": "California",
+                "country": "United States",
+                "street": "849 Longfellow Street Crawfordsville"
+            },
+            "slots": [
+                {
+                    "date": "2020-03-19",
+                    "no": 3,
+                    "timings": [
+                        "12:30 PM",
+                        "01:00 PM",
+                        "04:00 PM"
+                    ]
+                },
+                {
+                    "date": "2020-03-20",
+                    "no": 0,
+                    "timings": []
+                },
+                {
+                    "date": "2020-03-21",
+                    "no": 4,
+                    "timings": [
+                        "11:30 AM",
+                        "01:00 PM",
+                        "03:30 PM",
+                        "08:30 PM",
+                    ]
+                },
+                {
+                    "date": "2020-03-22",
+                    "no": 2,
+                    "timings": [
+                        "12:0 AM",
+                        "05:40 PM"
+                    ]
+                },
+            ]
+        },
+        {   "id": 14,
+            "name": "Brendan Simmons",
+            "speciality": "Pediatrician",
+            "rating": "4.2",
+            "exp": "12",
+            "fee": "65",
+            "about": "When they heard this, they praised God. Then they said to Paul: You see, brother, how many thousands of Jews have believed, and all of them are zealous for the law.",
+            "available_in_min": 0,
+            "location": {
+                "city": "Florida",
+                "country": "United States",
+                "street": "246 Campfire Street Palm Beach Gardens"
+            },
+            "slots": [
+                {
+                    "date": "2020-03-19",
+                    "no": 0,
+                    "timings": []
+                },
+                {
+                    "date": "2020-03-20",
+                    "no": 3,
+                    "timings": [
+                        "12:30 PM",
+                        "01:00 PM",
+                        "04:00 PM"
+                    ]
+                },
+                {
+                    "date": "2020-03-21",
+                    "no": 4,
+                    "timings": [
+                        "11:30 AM",
+                        "01:00 PM",
+                        "03:30 PM",
+                        "08:30 PM",
+                    ]
+                },
+                {
+                    "date": "2020-03-22",
+                    "no": 2,
+                    "timings": [
+                        "12:0 AM",
+                        "05:40 PM"
+                    ]
+                },
+            ]
+        },
+        {   "id": 15,
+            "name": "Shelia Page",
+            "speciality": "Ophthalmologist",
+            "rating": "4.8",
+            "exp": "21",
+            "fee": "70",
+            "about": "And there before me was the glory of the God of Israel, as in the vision I had seen in the plain.",
+            "available_in_min": 10,
+            "location": {
+                "city": "New York",
+                "country": "United States",
+                "street": "300 Woodside Street Chippewa Falls"
+            },
+            "slots": [
+                {
+                    "date": "2020-03-19",
+                    "no": 3,
+                    "timings": [
+                        "12:30 PM",
+                        "01:00 PM",
+                        "04:00 PM"
+                    ]
+                },
+                {
+                    "date": "2020-03-20",
+                    "no": 0,
+                    "timings": []
+                },
+                {
+                    "date": "2020-03-21",
+                    "no": 4,
+                    "timings": [
+                        "11:30 AM",
+                        "01:00 PM",
+                        "03:30 PM",
+                        "08:30 PM",
+                    ]
+                },
+                {
+                    "date": "2020-03-22",
+                    "no": 2,
+                    "timings": [
+                        "12:0 AM",
+                        "05:40 PM"
+                    ]
+                },
+            ]
+        },
+    ]
+}

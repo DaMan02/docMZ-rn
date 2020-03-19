@@ -1,0 +1,52 @@
+{
+    "specialities": [
+        {   "id": 1,
+            "name": "Eye Doctor",
+            "icon": "eye_doctor"
+        },
+        {   "id": 2,
+            "name": "Dentist",
+            "icon": "dentist"
+        },
+        {   "id": 3,
+            "name": "Dermatologist",
+            "icon": "dermatologist"
+        },
+        {   "id": 4,
+            "name": "Eye Doctor",
+            "icon": "eye_doctor"
+        },
+        {   "id": 5,
+            "name": "Dentist",
+            "icon": "dentist"
+        },
+        {   "id": 6,
+            "name": "Dermatologist",
+            "icon": "dermatologist"
+        },
+        {   "id": 7,
+            "name": "Eye Doctor",
+            "icon": "eye_doctor"
+        },
+        {   "id": 8,
+            "name": "Dentist",
+            "icon": "dentist"
+        },
+        {   "id": 9,
+            "name": "Dermatologist",
+            "icon": "dermatologist"
+        },
+        {   "id": 10,
+            "name": "Eye Doctor",
+            "icon": "eye_doctor"
+        },
+        {   "id": 11,
+            "name": "Dentist",
+            "icon": "dentist"
+        },
+        {   "id": 12,
+            "name": "Dermatologist",
+            "icon": "dermatologist"
+        },
+    ]
+}

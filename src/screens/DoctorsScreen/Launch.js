@@ -25,14 +25,14 @@ class Launch extends Component {
     render() {
         return (
             <View style={styles.master}>
-                <StatusBar backgroundColor='white' barStyle="dark-content" />
+                <StatusBar backgroundColor={colors.primary1} barStyle="light-content" />
                 <Image source={require('../../assets/images/landing_icon.png')}
                     style={styles.image} />
                 <Text style={styles.big}>Doctor On Demand</Text>
                 <Text style={styles.small1}>Consult a doctor now !</Text>
                 <Text style={styles.small}>Find a doctor nearby or connect online.</Text>
                 <LongButton onPress={() => this.consult(true)}
-                    text='VISIT NOW' backgroundColor={colors.greenblue} textColor='white' />
+                    text='VISIT NOW' backgroundColor={colors.button} textColor='white' />
                 <LongButton onPress={() => this.consult(false)}
                     text='CONSULT' backgroundColor='white' textColor='black' />
             </View>

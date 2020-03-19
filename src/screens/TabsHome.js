@@ -16,7 +16,7 @@ class TabsHome extends React.Component {
   render() {
     return (
       <NavigationContainer independent={true}>
-        <StatusBar backgroundColor='white' barStyle="dark-content" />
+        <StatusBar backgroundColor={colors.primary1} barStyle="dark-content" />
         <Tab.Navigator
           initialRouteName="Doctors"
           screenOptions={({ route }) => ({
