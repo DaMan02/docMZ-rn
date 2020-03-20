@@ -18,7 +18,7 @@ function renderAvail(props) {
     else {
         return (
             <View style={styles.button}>
-                <TouchableOpacity activeOpacity={0.6} onPress={props.onPress}
+                <TouchableOpacity activeOpacity={0.6} onPress={props.onClick}
                     style={{ ...styles.buttonContainer, width: 76, height: 34 }}>
                     <View >
                         <Text style={{ ...fonts.para, color: 'white' }}>Visit</Text>
@@ -30,7 +30,7 @@ function renderAvail(props) {
 }
 
 const DoctorPreview = (props) => (
-    <TouchableOpacity activeOpacity={0.8} style={styles.main}>
+    <TouchableOpacity activeOpacity={0.8} onPress={props.onPress} style={styles.main}>
         <View style={styles.dp}>
             <Image source={require('../assets/images/doc.png')}
                 style={styles.image} />
@@ -40,7 +40,7 @@ const DoctorPreview = (props) => (
             <Text style={styles.spec}>{props.spec}</Text>
             <Text style={styles.loc}>{props.loc}</Text>
         </View>
-        { renderAvail(props) }
+        {renderAvail(props)}
     </TouchableOpacity >
 );
 

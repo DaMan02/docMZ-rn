@@ -10,6 +10,8 @@ import { ScrollView } from 'react-native-gesture-handler';
 import colors from '../../assets/colors';
 import NormalButton from '../../components/NormalButton';
 import dimen from '../../assets/dimen';
+import Rating from '../../components/Rating';
+import ResizableButton from '../../components/ResizableButton';
 
 class DocPublicProf extends React.Component {
 
@@ -26,54 +28,43 @@ class DocPublicProf extends React.Component {
         BackHandler.addEventListener("hardwareBackPress", this.backAction);
     }
 
-    nextScreen(navigation, now){
-       now ? navigation.navigate('Visit') : navigation.navigate('ConsultOptions')
+    nextScreen(navigation, doc) {
+        // doc.available_in_min == 0 ? navigation.navigate('Visit') : navigation.navigate('ConsultOptions')
+        navigation.navigate('SignedOut')
     }
 
     render() {
-
         const { navigation } = this.props;
-        const { docName } = this.props.route.params;
-        const  now  = this.props.consultNow;
-        console.log(now)
-        const { screen } = now ? 'Visit' : 'ConsultOptions';
+        const { doc } = this.props.route.params;
+        // const  now  = this.props.consultNow;
+        let avail = doc.available_in_min == 0;
 
-        let btnText = now ? 'VISIT NOW' : 'CONSULT';
+        let btnText = avail ? 'VISIT NOW' : 'CONSULT';
+        let available = avail ? 'Available' : 'Available in ' + doc.available_in_min + ' min';
         return (
-            <View style={styles.main}>
+            <ScrollView style={styles.main}>
                 <View style={styles.dp}>
                     <Image source={require('../../assets/images/doc.jpg')}
                         style={styles.image} />
                     <View style={styles.btn}>
-                        <NormalButton onPress={() => this.nextScreen(navigation, now)}
-                            radius={8} text={btnText} backgroundColor={colors.greenblue} textColor='white'></NormalButton>
+                        <ResizableButton onPress={() => this.nextScreen(navigation, doc)}
+                            text={btnText} height={40} width={140}></ResizableButton>
                     </View>
                 </View>
-                <ScrollView>
-                    <Text style={{ ...fonts.large, alignSelf: 'flex-start', marginStart: wp('10%'), marginTop: hp('2%') }}>Dr. {docName}</Text>
-                    <Text style={{ ...fonts.h3_thin, marginStart: dimen.ms, alignSelf: 'flex-start', marginBottom: hp('2%') }}>Surgeon</Text>
+                    <Text style={{ ...fonts.large, alignSelf: 'flex-start', marginStart: wp('10%'), marginTop: hp('2%') }}>Dr. {doc.name}</Text>
+                    <Text style={{ ...fonts.h3_thin, marginStart: dimen.ms, alignSelf: 'flex-start', marginBottom: hp('2%') }}>{doc.speciality}</Text>
+                    <View style={styles.rate}><Rating rate={doc.rating} /></View>
                     <Text style={styles.txt}>
                         <Text style={{ color: colors.darkgray }}>Status:   </Text>
-                        <Text style={{ color: colors.darkgreen }}>Available</Text>
+                        <Text style={{ color: colors.darkgreen }}>{available}</Text>
                     </Text>
-                    <Text style={styles.txt}>
-                        <Text style={{ color: colors.darkgray }}>Gender:   </Text>
-                        <Text>Male</Text>
-                    </Text>
-                    <Text style={styles.txt}>
-                        <Text style={{ color: colors.darkgray }}>Country:   </Text>
-                        <Text>United States</Text>
-                    </Text>
-                    <Text style={styles.txt}>
-                        <Text style={{ color: colors.darkgray }}>Address:   </Text>
-                        <Text>21 S END AVE, New York - 110023</Text>
-                    </Text>
-                    <Text style={styles.txt}>
-                        <Text style={{ color: colors.darkgray }}>Country:   </Text>
-                        <Text>United States</Text>
-                    </Text>
-                </ScrollView>
-            </View>
+                    <Text style={styles.txt}>{doc.exp} years of experience</Text>
+                        <Text style={{...styles.txt, color: colors.darkgray }}>Address:   </Text>
+                        <Text style={styles.txt}>{doc.location.street}</Text>
+                        <Text style={styles.txt}>{doc.location.city}</Text>
+                        <Text style={{...styles.txt, color: colors.darkgray }}>About:   </Text>
+                        <Text style={styles.txt}>{doc.about}</Text>
+            </ScrollView>
 
         )
     }
@@ -84,13 +75,19 @@ const styles = StyleSheet.create({
         flex: 1,
         backgroundColor: 'white'
     },
+    rate: {
+        position: 'absolute',
+        right: wp('2%'),
+        top: hp('36%')
+    },
     dp: {
         marginTop: hp('1%'),
         flexDirection: 'row'
     },
     btn: {
-        marginTop: hp('24%'),
-        marginStart: wp('4%')
+        position: 'absolute',
+        top: hp('24%'),
+        right: wp('10%')
     },
     image: {
         marginTop: hp('10%'),

@@ -7,7 +7,8 @@ import {
   StyleSheet,
   TextInput,
   BackHandler,
-  StatusBar
+  StatusBar,
+  Image
 } from 'react-native';
 import {
   widthPercentageToDP as wp,
@@ -25,6 +26,8 @@ import docs from '../../database/doctorsDemo.json'
 import specs from '../../database/specialityDemo.json'
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import ViewAll from '../../components/ViewAll';
+import Searchbar from '../../components/Searchbar';
+import Titlebar from '../../components/Titlebar';
 
 class DoctorSearch extends Component {
   state = {
@@ -66,30 +69,18 @@ class DoctorSearch extends Component {
   }
 
   render() {
-    let iconPath = '../../assets/images';
     return (
       <View
         onStartShouldSetResponderCapture={() => { this.setState({ enableScrollViewScroll: true }); }}
         style={styles.container}>
         <StatusBar backgroundColor={colors.primary1} barStyle="light-content" />
-        <View style={styles.head}>
-          <Icon name="ios-menu" size={30} color='black' />
-          <Text style={{ ...fonts.h3, fontSize: 22, marginStart: wp('6%'), textAlign: 'center' }}>DocMz</Text>
-          <Icon name="ios-funnel" size={24} color='black' />
-        </View>
-        <View style={styles.search}>
-          <TextInput
-            style={styles.searchbar}
-            onChangeText={text => this.onChangeText(text)}
-            value={this.props.search}
-            placeholder='Search doctors'
-          />
-          <TouchableOpacity activeOpacity={0.4} style={styles.searchIcon}><Icon name='ios-search' size={18} color='white' /></TouchableOpacity>
-        </View>
+        <Titlebar title='DocMz'/>
+        <Searchbar onChangeText={(text) => this.onChangeText(text)}
+          hint='Search doctors' />
         <ScrollView>
           <View
             style={styles.catMain}>
-            <ViewAll title='SELECT SPECIALITY' />
+            <ViewAll title='SELECT SPECIALITY' onPress={() => this.props.navigation.navigate('AllSpecialities')}/>
             <ScrollView
               horizontal={this.state.specialityList.length > 0}
               showsHorizontalScrollIndicator={false}
@@ -97,8 +88,8 @@ class DoctorSearch extends Component {
               {this.state.specialityList.length > 0 ? (
                 this.state.specialityList.slice(0, 6).map(sp => {
                   return (
-                    <Speciality onPress={() => console.log(iconPath + '/' + sp.icon + '.png')}
-                      title={sp.name} uri={require(iconPath + '/' + 'stetho.png')} />
+                    <Speciality onPress={() => console.log('click')}
+                      title={sp.name} uri={require('../../assets/images/stetho.png')} />
                   );
                 })
               ) : (
@@ -115,17 +106,19 @@ class DoctorSearch extends Component {
                       )}
                   </View>
                 )}
+                <View style={{width: 28}}></View>
             </ScrollView>
           </View>
-{/* start free docs */}
-          <ViewAll title='FREE CHECKUP' />
+          {/* start free docs */}
+          <ViewAll title='FREE CHECKUP' onPress={() => this.props.navigation.navigate('AllDoctors', { docType: 'All Free Checkups'})}/>
           {this.state.doctorsList.length > 0 ? (
             this.state.doctorsList.slice(0, 3).map(doctor => {
               return (
                 <View key={doctor.id}>
                   <DoctorPreview
                     onPress={() => this.props.navigation.navigate('DocPublicProf',
-                      { docDetails: doctor })}
+                      { doc: doctor })}
+                      // onClick={() => this.props.navigation.navigate('Visit')}
                     name={doctor.name} spec={doctor.speciality} avail={doctor.available_in_min} />
                 </View>
               );
@@ -144,8 +137,9 @@ class DoctorSearch extends Component {
                   )}
               </View>
             )}
-{/* end free docs */}
-          <ViewAll title='TOP DOCTORS' />
+          {/* end free docs */}
+
+          <ViewAll title='TOP DOCTORS' onPress={() => this.props.navigation.navigate('AllDoctors', { docType: 'All Doctors'})} />
           {/* <ScrollView > */}
           {/* {this.state.doctorsList.length > 0 ? (
             this.state.doctorsList.map(doctor => {
@@ -164,7 +158,7 @@ class DoctorSearch extends Component {
                 <View key={doctor.id}>
                   <DoctorPreview
                     onPress={() => this.props.navigation.navigate('DocPublicProf',
-                      { docDetails: doctor })}
+                      { doc: doctor })}
                     name={doctor.name} spec={doctor.speciality} avail={doctor.available_in_min} />
                 </View>
               );
@@ -184,6 +178,7 @@ class DoctorSearch extends Component {
               </View>
             )}
           {/* </ScrollView> */}
+
         </ScrollView>
       </View>
     );
@@ -199,50 +194,16 @@ const styles = StyleSheet.create({
     minHeight: hp('25%'),
     backgroundColor: colors.bg
   },
-  searchIcon: {
-    backgroundColor: colors.button,
-    borderRadius: 50,
-    height: 46,
-    width: 46,
-    alignItems: 'center',
-    justifyContent: 'center'
-  },
   title: {
     ...fonts.para,
     marginStart: 18,
     marginBottom: hp('1%'),
     marginTop: hp('4%')
   },
-  searchbar: {
-    height: 46,
-    marginStart: 10,
-    marginEnd: 10,
-    paddingEnd: 130
-  },
   scroll: {
     justifyContent: 'center',
     alignItems: 'center',
-    marginStart: 20
-  },
-  head: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'space-between',
-    marginTop: hp('2%'),
-    marginStart: 12,
-  },
-  search: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    paddingStart: 14,
-    paddingEnd: 0,
-    justifyContent: 'space-between',
-    marginStart: 28,
-    marginEnd: 16,
-    marginTop: hp('2%'),
-    marginBottom: 8,
-    backgroundColor: 'white',
-    borderRadius: 8
+    marginStart: 20,
   },
 });
 

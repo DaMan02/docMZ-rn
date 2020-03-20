@@ -4,11 +4,11 @@ import colors from '../assets/colors';
 import Icon from 'react-native-vector-icons/Ionicons';
 import fonts from '../assets/fonts';
 
-// props: title, icon
+// props: rate
 
 const Rating = (props) => (
     <View style={styles.rate}>
-        <Text style={{ color: 'white' }}>{props.rate}</Text>
+        <Text style={{ ...fonts.para, color: 'white' }}>{props.rate}</Text>
     </View>
 );
 
@@ -18,7 +18,7 @@ const styles = StyleSheet.create({
         top: 16,
         right: 16,
         alignItems: 'center',
-        backgroundColor: '#FFC100',
+        backgroundColor: '#D4AC0D',
         height: 22,
         width: 36,
         borderRadius: 6

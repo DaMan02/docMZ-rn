@@ -33,10 +33,10 @@ const Speciality = (props) => (
 const styles = StyleSheet.create({
     main: {
         borderRadius: 20,
-        width: wp('34%'),
+        width: wp('30%'),
         marginStart: 6,
         marginEnd: 6,
-        height: hp('26%'),
+        height: hp('22%'),
         elevation: 2,
         marginBottom: 1,
         flex: 1,
@@ -67,7 +67,6 @@ const styles = StyleSheet.create({
         marginEnd: 1,
         justifyContent: 'flex-end',
         textAlign: 'center',
-        marginTop: hp('4%')
     }
 });
 
