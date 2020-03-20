@@ -56,7 +56,7 @@ export default class AppointmentScreen extends Component {
   }
 
   itemPressed(id) {
-    alert(id);
+    Alert.alert(id);
   }
 
   renderEmptyItem() {

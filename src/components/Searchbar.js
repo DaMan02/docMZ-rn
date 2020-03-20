@@ -5,7 +5,7 @@ import colors from '../assets/colors';
 import { heightPercentageToDP } from 'react-native-responsive-screen';
 import Icon from 'react-native-vector-icons/Ionicons';
 
-// props: onChangeText, value,  hint
+// props: onChangeText, value,  hint, onSearch
 
 const Searchbar = (props) => (
     <View style={styles.search}>
@@ -32,7 +32,7 @@ const styles = StyleSheet.create({
         height: 46,
         marginStart: 10,
         marginEnd: 10,
-        paddingEnd: 110
+        paddingEnd: 10
       },
       search: {
         flexDirection: 'row',

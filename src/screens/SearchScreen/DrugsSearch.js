@@ -1,15 +1,16 @@
 import React from 'react';
-import { View, Text, TextInput, TouchableOpacity, ToastAndroid, ActivityIndicator, BackHandler } from 'react-native';
+import { View, Text, TextInput, TouchableOpacity, ToastAndroid, ActivityIndicator, BackHandler, StatusBar, Keyboard } from 'react-native';
 import colors from '../../assets/colors';
 import Icon from 'react-native-vector-icons/Ionicons';
 import { connect } from 'react-redux';
-import { ScrollView } from 'react-native-gesture-handler';
+import { ScrollView, FlatList } from 'react-native-gesture-handler';
 import medsDemo from '../../database/medDemo.json'
 import meds from '../../database/medicines.json'
-import { Colors, Searchbar } from 'react-native-paper';
+import { Colors } from 'react-native-paper';
 import fonts from '../../assets/fonts';
 import styles from './styles'
 import IllnessCard from '../../components/IllnessCard';
+import Searchbar from '../../components/Searchbar';
 import {
   widthPercentageToDP as wp,
   heightPercentageToDP as hp,
@@ -18,23 +19,32 @@ import HealthConcern from '../../components/HealthConcern';
 
 class DrugsSearch extends React.Component {
 
-  backAction = () => {
-    
-    return true;
-  };
-
-  componentWillUnmount() {
-    BackHandler.removeEventListener("hardwareBackPress", this.backAction);
-  }
-
-  componentDidMount() {
-    BackHandler.addEventListener("hardwareBackPress", this.backAction);
-  }
   state = {
     dataSource: [],
     displayData: [],
     typing: false,
   }
+
+  isEmpty() {
+    return !this.state.displayData.length > 0
+  }
+
+  // backAction = () => {
+  //   console.log('back?')
+  //   if (this.isEmpty) {
+  //     this.onChangeText('')
+  //     return true;
+  //   } else
+  //     return false;
+  // };
+
+  // componentWillUnmount() {
+  //   BackHandler.removeEventListener("hardwareBackPress", this.backAction);
+  // }
+
+  // UNSAFE_componentWillMount(){
+  //   BackHandler.addEventListener("hardwareBackPress", this.backAction);
+  // }
 
   async componentDidMount() {
     const data = await meds.Medicine_Details;
@@ -52,6 +62,7 @@ class DrugsSearch extends React.Component {
   }
 
   goClick() {
+    Keyboard.dismiss()
     this.props.loadUpdate(true)
     let that = this;
     setTimeout(function () { that.handleSearch(that.props.search); }, 1000);
@@ -66,32 +77,12 @@ class DrugsSearch extends React.Component {
     this.setState({ displayData: data });
   }
 
-  isEmpty() {
-    return !this.state.displayData.length > 0
-  }
-
   renderProgress() {
     if (this.props.load)
       return (
         <View style={styles.indicator}>
           <ActivityIndicator size='small' color={Colors.black} />
         </View>
-      )
-  }
-
-  renderGo() {
-    if (this.state.typing && !this.props.load)
-      return (
-        <TouchableOpacity activeOpacity={0.8} style={styles.go} onPress={() => this.goClick()}>
-          <Icon name='ios-arrow-round-forward' size={26} color='black' />
-        </TouchableOpacity>
-      )
-  }
-
-  renderSearchIcon() {
-    if (!this.props.load)
-      return (
-        <Icon name='ios-search' size={22} color='black' />
       )
   }
 
@@ -104,6 +95,7 @@ class DrugsSearch extends React.Component {
     if (this.isEmpty())
       return (
         <View>
+          <StatusBar backgroundColor={colors.primary1} barStyle="light-content" />
           <Text style={{ ...fonts.h2, width: wp('50%'), marginStart: 20, padding: 10, marginBottom: 8, marginTop: hp('1%') }}>Choose a category</Text>
           <ScrollView style={styles.horizon} horizontal showsHorizontalScrollIndicator={false}>
             <IllnessCard title='Cough & Cold' uri={require('../../assets/images/cough.png')} bg='#FAB0C5' />
@@ -129,52 +121,58 @@ class DrugsSearch extends React.Component {
 
   renderSearch() {
     return (
-      <View style={styles.searchContainer}>
-        <Text style={styles.head}>Online Consultation</Text>
-        <View style={styles.search}>
-          {this.renderSearchIcon()}
-          {this.renderProgress()}
-          <TextInput
-            style={styles.searchbar}
-            onChangeText={text => this.onChangeText(text)}
-            value={this.props.search}
-            placeholder='Search for drugs'
-          />
-          {this.renderGo()}
-        </View>
+      <View>
+        {this.renderProgress()}
+        <Searchbar hint='Search for drugs'
+          value={this.props.search}
+          onChangeText={text => this.onChangeText(text)}
+          onSearch={() => this.goClick()} />
       </View>
-    );
+    )
   }
 
   renderItemRow(item) {
     if (this.props.load) this.props.loadUpdate(false)
     return (
-      <View>
+      <TouchableOpacity onPress={() => this.onListPress(item)} activeOpacity={0.4}>
         <Text style={styles.listItems}>{item.salt_name}</Text>
         <View style={styles.dummy}></View>
-      </View>
+      </TouchableOpacity>
     )
+  }
+
+  onScrollHandler() {
+    console.log('end')
   }
 
   renderList() {
     if (!this.isEmpty())
-      return this.state.displayData.map(item =>
-        <TouchableOpacity activeOpacity={0.6}
-          key={item.salt_name} style={styles.list}
-          onPress={() => this.onListPress(item)}>
-          {this.renderItemRow(item)}
-        </TouchableOpacity>
-      );
+      return (
+        <FlatList overScrollMode='always' showsVerticalScrollIndicator={false}
+          data={this.state.displayData}
+          renderItem={({ item }) => this.renderItemRow(item)}
+          keyExtractor={item => item.salt_name}
+          refreshing
+          onEndReached={() => this.onScrollHandler()}
+          onEndThreshold={1}
+          // ListEmptyComponent={() => this.renderProgress()}
+          // Performance settings
+          removeClippedSubviews={true} // Unmount components when outside of window 
+          initialNumToRender={6} // Reduce initial render amount
+          maxToRenderPerBatch={1} // Reduce number in each render batch
+          updateCellsBatchingPeriod={100} // Increase time between renders
+          windowSize={7} // Reduce the window size
+        />
+      )
   }
 
   render() {
     return (
       <View style={styles.container}>
+        <Text style={styles.head}>Online Consultation</Text>
         {this.renderSearch()}
-        <ScrollView overScrollMode='always' showsVerticalScrollIndicator={false}>
-          {this.renderList()}
-          {this.renderMain()}
-        </ScrollView>
+        {this.renderList()}
+        {this.renderMain()}
       </View>
     );
   }

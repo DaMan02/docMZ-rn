@@ -10,7 +10,7 @@ import {
 
 const NormalButton = (props) => (
     <View  
-    style={{...props.buttonStyle, alignItems:'center', justifyContent:'center'  }}>
+    style={{...props.buttonStyle, alignItems:'center', justifyContent:'center' }}>
     <TouchableOpacity activeOpacity={0.6} onPress={props.onPress}
     style={{...styles.buttonContainer, backgroundColor:props.backgroundColor, borderColor: props.backgroundColor, borderRadius: props.radius, borderWidth: 1 }} >
         <View >

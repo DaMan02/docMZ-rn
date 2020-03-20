@@ -12,7 +12,6 @@ class HomeScreen extends React.Component {
         return (
             <View style={styles.container}>
                 <HomeHeader />
-
                 <View style={styles.normalbutton}>
                     <NormalButton
                         backgroundColor={colors.typography}

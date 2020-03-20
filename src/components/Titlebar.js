@@ -4,16 +4,16 @@ import colors from "../assets/colors";
 import fonts from '../assets/fonts';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import { heightPercentageToDP, widthPercentageToDP } from 'react-native-responsive-screen';
-import Icon from 'react-native-vector-icons/Ionicons'
+import Icon from 'react-native-vector-icons/MaterialCommunityIcons'
 
 
 // props: title
 
 const Titlebar = (props) => (
     <View style={styles.head}>
-        <Icon name="ios-menu" size={30} color='black' />
+        <TouchableOpacity><Icon name="menu" size={30} color='#464646' /></TouchableOpacity>
         <Text style={{ ...fonts.h3, fontSize: 22, marginStart: widthPercentageToDP('6%'), textAlign: 'center' }}>{props.title}</Text>
-        <Image source={require('../assets/images/filter.png')} />
+        <TouchableOpacity><Icon name="filter-outline" size={30} color='#464646' /></TouchableOpacity>
     </View>
 );
 

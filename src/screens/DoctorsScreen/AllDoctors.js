@@ -5,10 +5,10 @@ import {
   ScrollView,
   ActivityIndicator,
   StyleSheet,
-  TextInput,
+  Keyboard,
   BackHandler,
   StatusBar,
-  Image
+  FlatList
 } from 'react-native';
 import {
   widthPercentageToDP as wp,
@@ -32,6 +32,7 @@ class AllDoctors extends Component {
     doctorsList: [],
     specialityList: [],
     isLoading: true,
+    search: ''
   };
 
   backAction = () => {
@@ -55,12 +56,57 @@ class AllDoctors extends Component {
     } catch (error) {
       console.log(error);
       this.setState({ isLoading: false });
-      alert(error.message);
+      // alert(error.message);
     }
   }
 
-  onChangeText() {
+  // search 
 
+  onChangeText(text) {
+    this.setState({ search: text })
+    if (text == '') {
+      this.setState({ doctorsList: docs.doctor_details })
+    }
+  }
+
+  goClick() {
+    Keyboard.dismiss()
+    this.handleSearch(this.state.search)
+  }
+
+  async handleSearch(text) {
+    console.log('Searching: ' + text)
+    let data = this.state.doctorsList;
+    data = data.filter(function (d) {
+      return (
+        d.name.toLowerCase().match(text.toLowerCase()) ||
+        d.speciality.toLowerCase().match(text.toLowerCase()) ||
+        d.location.city.toLowerCase().match(text.toLowerCase())
+      );
+    });
+    this.setState({ doctorsList: data });
+  }
+
+  renderLoad() {
+    if (!this.state.doctorsList > 0)
+      return (
+        <View>
+          {this.state.isLoading ? (
+            <ActivityIndicator size="large" color={colors.primary2} />
+          ) : (
+              <Text>No doctors found</Text>
+            )}
+        </View>
+      )
+  }
+
+  renderList(doctor) {
+    return (
+      <DoctorPreview
+        onPress={() => this.props.navigation.navigate('DocPublicProf',
+          { doc: doctor })}
+        name={doctor.name} spec={doctor.speciality} loc={doctor.location.city + ', ' + doctor.location.country} avail={doctor.available_in_min} />
+    )
   }
 
   render() {
@@ -70,39 +116,21 @@ class AllDoctors extends Component {
         onStartShouldSetResponderCapture={() => { this.setState({ enableScrollViewScroll: true }); }}
         style={styles.container}>
         <StatusBar backgroundColor={colors.primary1} barStyle="light-content" />
-        <Titlebar title={docType}/>
-        <Searchbar onChangeText={(text) => this.onChangeText(text)}
-          hint='Search doctors' />
-        <ScrollView>
-         
-          {/* start free docs */}
-          {this.state.doctorsList.length > 0 ? (
-            this.state.doctorsList.map(doctor => {
-              return (
-                <View key={doctor.id}>
-                  <DoctorPreview
-                    onPress={() => this.props.navigation.navigate('DocPublicProf',
-                      { doc: doctor })}
-                    name={doctor.name} spec={doctor.speciality} avail={doctor.available_in_min} />
-                </View>
-              );
-            })
-          ) : (
-              <View
-                style={{
-                  justifyContent: 'center',
-                  alignItems: 'center',
-                  height: hp('20%'),
-                }}>
-                {this.state.isLoading ? (
-                  <ActivityIndicator size="large" color={colors.primary2} />
-                ) : (
-                    <Text>No doctors found</Text>
-                  )}
-              </View>
-            )}
-          {/* end free docs */}
-        </ScrollView>
+        <Titlebar title={docType} />
+        <Searchbar onChangeText={(text) => this.onChangeText(text)} onSearch={() => this.goClick()}
+          hint='Search by name, speciality, city' />
+        <FlatList style={styles.list}
+          data={this.state.doctorsList}
+          showsVerticalScrollIndicator={false}
+          renderItem={({ item }) => this.renderList(item)}
+          keyExtractor={item => item.id}
+          // Performance settings
+          removeClippedSubviews={true} // Unmount components when outside of window 
+          initialNumToRender={20} // Reduce initial render amount
+          maxToRenderPerBatch={1} // Reduce number in each render batch
+          updateCellsBatchingPeriod={100} // Increase time between renders
+          windowSize={7} // Reduce the window size
+        />
       </View>
     );
   }

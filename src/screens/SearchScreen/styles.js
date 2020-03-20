@@ -6,7 +6,7 @@ import { heightPercentageToDP as hp, widthPercentageToDP as wp } from 'react-nat
 export default StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: 'white',
+    backgroundColor: colors.bg,
   },
   searchbar: {
     height: 46,
@@ -17,31 +17,8 @@ export default StyleSheet.create({
     ...fonts.header,
     fontSize: 24,
     marginStart: 20,
-    marginTop: 30,
-    marginBottom: 20
-  },
-  go: {
-    backgroundColor: 'white',
-    height: 38,
-    width: 38,
-    borderRadius: 50,
-    alignItems: 'center',
-    justifyContent: 'center',
-    elevation: 1
-  },
-  search: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    paddingStart: 14,
-    paddingEnd: 14,
-    marginStart: 28,
-    marginEnd: 16,
-    marginTop: 10,
-    marginBottom: 8,
-    backgroundColor: '#ECEFEF',
-    borderRadius: 6
-  },
-  searchContainer: {
+    marginTop: hp('6%'),
+    marginBottom: hp('1%')
   },
   dummy: {
     height: 0.5,
@@ -50,7 +27,6 @@ export default StyleSheet.create({
     marginStart: 20
   },
   list: {
-    backgroundColor: 'white',
     marginStart: 8,
     marginEnd: 8,
     borderRadius: 2,
@@ -63,5 +39,10 @@ export default StyleSheet.create({
   },
   horizon: {
     paddingStart: 28,
+  },
+  indicator: {
+    position: 'absolute',
+    right: wp('16%'),
+    top: -30
   }
 });

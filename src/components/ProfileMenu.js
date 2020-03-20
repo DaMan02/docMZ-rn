@@ -1,5 +1,5 @@
 import React from 'react';
-import {StyleSheet, Text, TouchableOpacity, View} from "react-native";
+import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import colors from '../assets/colors';
 import Icon from 'react-native-vector-icons/Ionicons';
 import fonts from '../assets/fonts';
@@ -7,10 +7,10 @@ import fonts from '../assets/fonts';
 // props: title, icon
 
 const ProfileMenu = (props) => (
-            <TouchableOpacity activeOpacity={0.7} style={styles.textContainer} onPress={props.onPress}>
-            <Text style={styles.text}>{props.title}</Text>     
-            <Icon style={styles.icon} name={props.icon} size={20} color='black' />         
-            </TouchableOpacity>
+    <TouchableOpacity activeOpacity={0.7} style={styles.textContainer} onPress={props.onPress}>
+        <Text style={styles.text}>{props.title}</Text>
+        <Icon style={styles.icon} name={props.icon} size={20} color='black' />
+    </TouchableOpacity>
 );
 
 const styles = StyleSheet.create({

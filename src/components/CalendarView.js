@@ -4,11 +4,11 @@ import { Calendar } from 'react-native-calendars';
 import fonts from '../assets/fonts';
 import { heightPercentageToDP, widthPercentageToDP } from 'react-native-responsive-screen';
 
-function getTodayString(){
+function getTodayString() {
     var date = new Date().getDate();
     var month = new Date().getMonth() + 1;
     var year = new Date().getFullYear();
-    if(month < 10) month = '0' + month; 
+    if (month < 10) month = '0' + month;
     var today = year + '-' + month + '-' + date;
     return today;
 }
@@ -24,8 +24,6 @@ export default class CalendarView extends Component {
     }
 
     onDayPress = (day) => {
-       
-        console.log(day.dateString)
         this.setState({ selected: day.dateString });
     }
 

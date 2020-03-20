@@ -11,7 +11,7 @@ class HeaderSearch extends React.Component {
         return (
             <View style={styles.title}>
                 <View style={{ flexDirection: 'row', marginTop: heightPercentageToDP('6%') }}>
-                    <StatusBar backgroundColor={colors.primary1} barStyle="dark-content" />
+                    <StatusBar backgroundColor='white' barStyle="dark-content" />
                     <TouchableOpacity onPress={this.props.onBack} style={styles.arrow}>
                         <Icon name='md-arrow-back' size={22} color='black' />
                     </TouchableOpacity>

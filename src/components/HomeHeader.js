@@ -1,20 +1,20 @@
 import React from 'react';
-import { View, Text, StyleSheet, StatusBar} from 'react-native';
+import { View, Text, StyleSheet, StatusBar } from 'react-native';
 import colors from "../assets/colors";
 import fonts from '../assets/fonts';
 
-class HomeHeader extends React.Component{
-   render(){
-       return(
-           <View style={styles.title}>
+class HomeHeader extends React.Component {
+    render() {
+        return (
+            <View style={styles.title}>
                 <StatusBar backgroundColor={colors.primary1} barStyle="light-content" />
                 <Text style={styles.textMain}>
-                <Text style={{...fonts.header, color: colors.primary1}}>doc</Text>
-                <Text style={{...fonts.header, color: colors.primary2}}>MZ</Text>
+                    <Text style={{ ...fonts.header, color: colors.primary1 }}>doc</Text>
+                    <Text style={{ ...fonts.header, color: colors.primary2 }}>MZ</Text>
                 </Text>
-           </View>
-       );
-   }
+            </View>
+        );
+    }
 }
 
 const styles = StyleSheet.create({

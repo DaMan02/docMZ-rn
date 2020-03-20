@@ -22,13 +22,16 @@ class TabsHome extends React.Component {
           screenOptions={({ route }) => ({
             tabBarIcon: ({ focused, color, size }) => {
               let iconName;
-              if (route.name === 'Home') {
-                iconName = 'home';
-              }else if (route.name === 'Search') {
+              // if (route.name === 'Home') {
+              //   iconName = 'home';
+              // }else
+               if (route.name === 'Search') {
                 iconName = 'search';
-              }else if (route.name === 'Appointment') {
-                iconName = 'clock';
-              }else if (route.name === 'Doctors') {
+              }
+              // else if (route.name === 'Appointment') {
+              //   iconName = 'clock';
+              // }
+              else if (route.name === 'Doctors') {
                 iconName = 'doctor';
               }else if (route.name === 'Profile') {
                 iconName = 'person';
@@ -43,9 +46,9 @@ class TabsHome extends React.Component {
           barStyle={{ backgroundColor: 'white' }}
         >
           <Tab.Screen name="Search" component={SearchScreen} />           
-          <Tab.Screen name="Home" component={HomeScreen} />
+          {/* <Tab.Screen name="Home" component={HomeScreen} /> */}
           <Tab.Screen name="Doctors" component={DoctorsScreen} /> 
-          <Tab.Screen name="Appointment" component={AppointmentsScreen} /> 
+          {/* <Tab.Screen name="Appointment" component={AppointmentsScreen} />  */}
           <Tab.Screen name="Profile" component={ProfileScreen} />        
         </Tab.Navigator>
       </NavigationContainer>

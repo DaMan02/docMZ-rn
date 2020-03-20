@@ -26,7 +26,7 @@ class Launch extends Component {
         return (
             <View style={styles.master}>
                 <StatusBar backgroundColor={colors.primary1} barStyle="light-content" />
-                <Image source={require('../../assets/images/landing_icon.png')}
+                <Image source={require('../../assets/images/doc.png')}
                     style={styles.image} />
                 <Text style={styles.big}>Doctor On Demand</Text>
                 <Text style={styles.small1}>Consult a doctor now !</Text>

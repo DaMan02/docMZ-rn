@@ -5,9 +5,12 @@ const initialState = {
   toggle4: false,
   toggle5: false,
   search: '',
+  searchDoc: '',
+  searchSp: '',
   load: false,
   isDoctor: true,
-  consultNow: true
+  consultNow: true,
+  loadDoc: false,
 };
 
 const reducer = (state = initialState, action) => {
@@ -57,6 +60,21 @@ const reducer = (state = initialState, action) => {
         ...state,
         consultNow: action.consultNow
       };
+      case 'UPDATE_SEARCH_DOC':
+      return {
+        ...state,
+        searchDoc: action.searchDoc
+      };
+      case 'UPDATE_SEARCH_SP':
+      return {
+        ...state,
+        searchSp: action.searchSp
+      };
+      case 'LOAD_DOC':
+        return {
+          ...state,
+          loadDoc: action.loadDoc
+        };
     default:
       return state;
   }

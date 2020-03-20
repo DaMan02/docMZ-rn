@@ -8,7 +8,7 @@ import {
   TextInput,
   BackHandler,
   StatusBar,
-  Image
+  Keyboard
 } from 'react-native';
 import {
   widthPercentageToDP as wp,
@@ -28,12 +28,14 @@ import { TouchableOpacity } from 'react-native-gesture-handler';
 import ViewAll from '../../components/ViewAll';
 import Searchbar from '../../components/Searchbar';
 import Titlebar from '../../components/Titlebar';
+import { connect } from 'react-redux';
 
 class DoctorSearch extends Component {
   state = {
     selectedOption: 1,
     doctorsList: [],
     specialityList: [],
+    displayDoc: [],
     isLoading: true,
   };
 
@@ -64,84 +66,126 @@ class DoctorSearch extends Component {
     }
   }
 
-  onChangeText() {
+  // search 
 
+  onChangeText(text) {
+    this.props.searchUpdateDoc(text)
+    if (text == '') {
+      // this.props.loadUpdateDoc(false)
+      this.setState({ doctorsList: docs.doctor_details, specialityList: specs.specialities })
+    }
   }
 
-  render() {
-    return (
-      <View
-        onStartShouldSetResponderCapture={() => { this.setState({ enableScrollViewScroll: true }); }}
-        style={styles.container}>
-        <StatusBar backgroundColor={colors.primary1} barStyle="light-content" />
-        <Titlebar title='DocMz'/>
-        <Searchbar onChangeText={(text) => this.onChangeText(text)}
-          hint='Search doctors' />
-        <ScrollView>
-          <View
-            style={styles.catMain}>
-            <ViewAll title='SELECT SPECIALITY' onPress={() => this.props.navigation.navigate('AllSpecialities')}/>
-            <ScrollView
-              horizontal={this.state.specialityList.length > 0}
-              showsHorizontalScrollIndicator={false}
-              contentContainerStyle={styles.scroll}>
-              {this.state.specialityList.length > 0 ? (
-                this.state.specialityList.slice(0, 6).map(sp => {
-                  return (
-                    <Speciality onPress={() => console.log('click')}
-                      title={sp.name} uri={require('../../assets/images/stetho.png')} />
-                  );
-                })
-              ) : (
-                  <View
-                    style={{
-                      justifyContent: 'center',
-                      alignItems: 'center',
-                      height: hp('20%'),
-                    }}>
-                    {this.state.isLoading ? (
-                      <ActivityIndicator size="large" color={colors.primary2} />
-                    ) : (
-                        <Text>No speciality found</Text>
-                      )}
-                  </View>
-                )}
-                <View style={{width: 28}}></View>
-            </ScrollView>
-          </View>
-          {/* start free docs */}
-          <ViewAll title='FREE CHECKUP' onPress={() => this.props.navigation.navigate('AllDoctors', { docType: 'All Free Checkups'})}/>
-          {this.state.doctorsList.length > 0 ? (
-            this.state.doctorsList.slice(0, 3).map(doctor => {
-              return (
-                <View key={doctor.id}>
-                  <DoctorPreview
-                    onPress={() => this.props.navigation.navigate('DocPublicProf',
-                      { doc: doctor })}
-                      // onClick={() => this.props.navigation.navigate('Visit')}
-                    name={doctor.name} spec={doctor.speciality} avail={doctor.available_in_min} />
-                </View>
-              );
-            })
-          ) : (
-              <View
-                style={{
-                  justifyContent: 'center',
-                  alignItems: 'center',
-                  height: hp('20%'),
-                }}>
-                {this.state.isLoading ? (
-                  <ActivityIndicator size="large" color={colors.primary2} />
-                ) : (
-                    <Text>No doctors found</Text>
-                  )}
-              </View>
-            )}
-          {/* end free docs */}
+  goClick() {
+    Keyboard.dismiss()
+    // this.props.loadUpdateDoc(true)
+    this.handleSearch(this.props.searchDoc)
+}
 
-          <ViewAll title='TOP DOCTORS' onPress={() => this.props.navigation.navigate('AllDoctors', { docType: 'All Doctors'})} />
-          {/* <ScrollView > */}
-          {/* {this.state.doctorsList.length > 0 ? (
+async handleSearch(text) {
+  console.log('Searching: ' + text)
+  let data = this.state.doctorsList;
+  let data2 = this.state.specialityList;
+  data = data.filter(function (d) {
+    return (
+      d.name.toLowerCase().match(text.toLowerCase()) ||
+      d.speciality.toLowerCase().match(text.toLowerCase())
+    );
+  });
+  data2 = data2.filter(function (d) {
+    return (
+      d.name.toLowerCase().match(text.toLowerCase())
+    );
+  });
+  this.setState({ doctorsList: data, specialityList: data2 });
+}
+
+// renderProgress() {
+//   if (this.props.loadDoc)
+//     return (
+//       <View style={styles.indicator}>
+//         <ActivityIndicator size='small' color='black' />
+//       </View>
+//     )
+// }
+
+// end search
+
+render() {
+  return (
+    <View
+      onStartShouldSetResponderCapture={() => { this.setState({ enableScrollViewScroll: true }); }}
+      style={styles.container}>
+      <StatusBar backgroundColor={colors.primary1} barStyle="light-content" />
+      <Titlebar title='DocMz' />
+      {/* {this.renderProgress()} */}
+      <Searchbar onChangeText={(text) => this.onChangeText(text)} onSearch={() => this.goClick()}
+        hint='Search doctors, specialities' />
+      <ScrollView>
+        <View
+          style={styles.catMain}>
+          <ViewAll title='SELECT SPECIALITY' onPress={() => this.props.navigation.navigate('AllSpecialities')} />
+          <ScrollView
+            horizontal={this.state.specialityList.length > 0}
+            showsHorizontalScrollIndicator={false}
+            contentContainerStyle={styles.scroll}>
+            {this.state.specialityList.length > 0 ? (
+              this.state.specialityList.slice(0, 6).map(sp => {
+                return (
+                  <Speciality onPress={() => console.log('click')}
+                    title={sp.name} uri={require('../../assets/images/stetho.png')} />
+                );
+              })
+            ) : (
+                <View
+                  style={{
+                    justifyContent: 'center',
+                    alignItems: 'center',
+                    height: hp('20%'),
+                  }}>
+                  {this.state.isLoading ? (
+                    <ActivityIndicator size="large" color={colors.primary2} />
+                  ) : (
+                      <Text>No speciality found</Text>
+                    )}
+                </View>
+              )}
+            <View style={{ width: 28 }}></View>
+          </ScrollView>
+        </View>
+        {/* start free docs */}
+        <ViewAll title='FREE CHECKUP' onPress={() => this.props.navigation.navigate('AllDoctors', { docType: 'All Free Checkups' })} />
+        {this.state.doctorsList.length > 0 ? (
+          this.state.doctorsList.slice(0, 3).map(doctor => {
+            return (
+              <View key={doctor.id}>
+                <DoctorPreview
+                  onPress={() => this.props.navigation.navigate('DocPublicProf',
+                    { doc: doctor })}
+                  // onClick={() => this.props.navigation.navigate('Visit')}
+                  name={doctor.name} spec={doctor.speciality} avail={doctor.available_in_min} />
+              </View>
+            );
+          })
+        ) : (
+            <View
+              style={{
+                justifyContent: 'center',
+                alignItems: 'center',
+                height: hp('20%'),
+              }}>
+              {this.state.isLoading ? (
+                <ActivityIndicator size="large" color={colors.primary2} />
+              ) : (
+                  <Text>No doctors found</Text>
+                )}
+            </View>
+          )}
+        {/* end free docs */}
+
+        <ViewAll title='TOP DOCTORS' onPress={() => this.props.navigation.navigate('AllDoctors', { docType: 'All Doctors' })} />
+        {/* <ScrollView > */}
+        {/* {this.state.doctorsList.length > 0 ? (
             this.state.doctorsList.map(doctor => {
               return (
                 <View key={doctor._id}>
@@ -152,37 +196,37 @@ class DoctorSearch extends Component {
                 </View>
               ); 
             }) */}
-          {this.state.doctorsList.length > 0 ? (
-            this.state.doctorsList.slice(0, 10).map(doctor => {
-              return (
-                <View key={doctor.id}>
-                  <DoctorPreview
-                    onPress={() => this.props.navigation.navigate('DocPublicProf',
-                      { doc: doctor })}
-                    name={doctor.name} spec={doctor.speciality} avail={doctor.available_in_min} />
-                </View>
-              );
-            })
-          ) : (
-              <View
-                style={{
-                  justifyContent: 'center',
-                  alignItems: 'center',
-                  height: hp('20%'),
-                }}>
-                {this.state.isLoading ? (
-                  <ActivityIndicator size="large" color={colors.primary2} />
-                ) : (
-                    <Text>No doctors found</Text>
-                  )}
+        {this.state.doctorsList.length > 0 ? (
+          this.state.doctorsList.slice(0, 10).map(doctor => {
+            return (
+              <View key={doctor.id}>
+                <DoctorPreview
+                  onPress={() => this.props.navigation.navigate('DocPublicProf',
+                    { doc: doctor })}
+                  name={doctor.name} spec={doctor.speciality} avail={doctor.available_in_min} />
               </View>
-            )}
-          {/* </ScrollView> */}
+            );
+          })
+        ) : (
+            <View
+              style={{
+                justifyContent: 'center',
+                alignItems: 'center',
+                height: hp('20%'),
+              }}>
+              {this.state.isLoading ? (
+                <ActivityIndicator size="large" color={colors.primary2} />
+              ) : (
+                  <Text>No doctors found</Text>
+                )}
+            </View>
+          )}
+        {/* </ScrollView> */}
 
-        </ScrollView>
-      </View>
-    );
-  }
+      </ScrollView>
+    </View>
+  );
+}
 }
 
 const styles = StyleSheet.create({
@@ -205,6 +249,21 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     marginStart: 20,
   },
+  indicator: {
+    position: 'absolute',
+    right: wp('18%'),
+    marginTop: hp('4%')
+  }
 });
 
-export default DoctorSearch;
+const mapStateToProps = state => ({
+  searchDoc: state.searchDoc,
+  // loadDoc: state.loadDoc
+});
+
+const mapDispatchToProps = dispatch => ({
+  searchUpdateDoc: val => dispatch({ type: 'UPDATE_SEARCH_DOC', searchDoc: val }),
+  // loadUpdateDoc: val => dispatch({ type: 'LOAD_DOC', loadDoc: val })
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(DoctorSearch);

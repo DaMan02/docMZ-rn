@@ -6,7 +6,7 @@ import {
     StyleSheet,
     BackHandler,
     StatusBar,
-    Image,
+    Keyboard,
     FlatList,
     ScrollView
 } from 'react-native';
@@ -29,6 +29,7 @@ class AllSpecialities extends Component {
         selectedOption: 1,
         specialityList: [],
         isLoading: true,
+        search: ''
     };
 
     backAction = () => {
@@ -50,13 +51,34 @@ class AllSpecialities extends Component {
         } catch (error) {
             console.log(error);
             this.setState({ isLoading: false });
-            alert(error.message);
+            // alert(error.message);
         }
     }
 
-    onChangeText() {
+   // search 
 
+  onChangeText(text) {
+    this.setState({ search: text })
+    if (text == '') {
+      this.setState({ specialityList: specs.specialities })
     }
+  }
+
+  goClick() {
+    Keyboard.dismiss()
+    this.handleSearch(this.state.search)
+  }
+
+  async handleSearch(text) {
+    console.log('Searching: ' + text)
+    let data = this.state.specialityList;
+    data = data.filter(function (d) {
+      return (
+        d.name.toLowerCase().match(text.toLowerCase())
+      );
+    });
+    this.setState({ specialityList: data });
+  }
 
     renderGrid(item) {
         return (
@@ -87,7 +109,7 @@ class AllSpecialities extends Component {
                 style={styles.container}>
                 <StatusBar backgroundColor={colors.primary1} barStyle="light-content" />
                 <Titlebar title='All Specialities' />
-                <Searchbar onChangeText={(text) => this.onChangeText(text)}
+                <Searchbar onChangeText={(text) => this.onChangeText(text)} onSearch={() => this.goClick()}
                     hint='Search Specialities' />
                 <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}
                     style={styles.catMain}>
@@ -96,7 +118,12 @@ class AllSpecialities extends Component {
                         numColumns={3}
                         showsVerticalScrollIndicator={false}
                         renderItem={({ item }) => this.renderGrid(item)}
-                        keyExtractor={this._keyExtractor}
+                        keyExtractor={item => item.id}
+                        removeClippedSubviews={true} // Unmount components when outside of window 
+                        initialNumToRender={21} // Reduce initial render amount
+                        maxToRenderPerBatch={1} // Reduce number in each render batch
+                        updateCellsBatchingPeriod={100} // Increase time between renders
+                        windowSize={7} // Reduce the window size
                     />
                     <View style={{height: hp('20%')}}></View>
                 </ScrollView>
