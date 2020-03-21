@@ -30,7 +30,7 @@ class DocPublicProf extends React.Component {
     }
 
     nextScreen(navigation, doc) {
-        doc.available_in_min == 0 ? navigation.navigate('Visit') : navigation.navigate('Book')
+        doc.available_in_min == 0 ? navigation.navigate('Visit') : navigation.navigate('Book', { doctor: doc })
         // navigation.navigate('SignedOut')
     }
 

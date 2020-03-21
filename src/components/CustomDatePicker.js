@@ -46,16 +46,12 @@ export default class CustomDatePicker extends React.Component {
 }
 
 const styles = StyleSheet.create({
-  btn: {
-    padding: 16,
-    marginTop: 10,
-  },
   cal: {
     backgroundColor: colors.button,
     borderRadius: 50,
     height: 40,
     width: 40,
     alignItems: 'center',
-    justifyContent: 'center'
+    justifyContent: 'center',
   }
 });

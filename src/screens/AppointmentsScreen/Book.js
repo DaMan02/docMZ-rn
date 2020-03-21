@@ -1,24 +1,21 @@
 import React from 'react';
-import { View, Text, StyleSheet, ToastAndroid, StatusBar } from 'react-native';
-import LoginHeader from '../../components/LoginHeader';
+import { View, Text, StyleSheet, ToastAndroid, StatusBar, BackHandler } from 'react-native';
 import colors from '../../assets/colors';
 import fonts from '../../assets/fonts';
 import {
     widthPercentageToDP as wp,
     heightPercentageToDP as hp,
 } from 'react-native-responsive-screen';
-import { ScrollView, TouchableOpacity } from 'react-native-gesture-handler';
-import NormalButton from '../../components/NormalButton';
+import { ScrollView, FlatList } from 'react-native-gesture-handler';
 import { TextInput } from 'react-native-paper';
-import ChipGroup from '../../components/ChipGroup';
 import { connect } from 'react-redux';
 import Icon from 'react-native-vector-icons/Feather';
-import * as Util from '../../utils/Util'
 import Titlebar from '../../components/Titlebar';
-import CustomDialog from '../../components/CustomDatePicker';
 import CustomDatePicker from '../../components/CustomDatePicker';
 import { format, compareAsc } from 'date-fns'
 import ResizableButton from '../../components/ResizableButton';
+import DoctorPreview from '../../components/DoctorPreview';
+import TimeSlot from '../../components/TimeSlot';
 
 class Book extends React.Component {
 
@@ -27,8 +24,22 @@ class Book extends React.Component {
         contact: '',
         date: '',
         dateSelected: false,
+        displayTime: '',
         reason: '',
         notes: ''
+    }
+
+    backAction = () => {
+        this.props.navigation.goBack()
+        return true;
+    };
+
+    componentWillUnmount() {
+        BackHandler.removeEventListener("hardwareBackPress", this.backAction);
+    }
+
+    componentDidMount() {
+        BackHandler.addEventListener("hardwareBackPress", this.backAction);
     }
 
     onChangeName(text) {
@@ -78,7 +89,29 @@ class Book extends React.Component {
         alert('Booked Successfully !')
     }
 
+    renderSlots = (slot) => {
+        return (
+            <TimeSlot time={slot.time} onPress={() => this.setState({ displayTime: slot.time })}/>
+        )
+    }
+
+    renderSlotView(slots) {
+        if (this.state.dateSelected)
+            return (
+                <View style={styles.slots} horizontal showsHorizontalScrollIndicator={false}>
+                    <FlatList
+                        data={slots.timings}
+                        horizontal
+                        showsHorizontalScrollIndicator={false}
+                        renderItem={({ item }) => this.renderSlots(item)}
+                        keyExtractor={item => item.id}
+                    />
+                </View>
+            )
+    }
+
     render() {
+        const { doctor } = this.props.route.params;
         let date = this.state.date
         let displayDate = 'Pick a date'
         if (this.state.dateSelected) {
@@ -86,11 +119,44 @@ class Book extends React.Component {
             displayDate = format(new Date(date.year, date.month - 1, date.day), 'MMM, dd yyyy')
         }
 
+        let tempSlots = {
+            timings: [
+                {
+                    "id": 1,
+                    "time": "10:30 AM"
+                },
+                {
+                    "id": 2,
+                    "time": "12:15 PM"
+                },
+                {
+                    "id": 3,
+                    "time": "3:30 PM"
+                },
+                {
+                    "id": 4,
+                    "time": "4:45 PM"
+                },
+                {
+                    "id": 5,
+                    "time": "7:00 PM"
+                },
+                {
+                    "id": 6,
+                    "time": "8:15 PM"
+                },
+            ]
+        }
+
         return (
             <View style={styles.container}>
-                <StatusBar backgroundColor='white' barStyle="dark-content" />
-                <Titlebar title='Book an appointment' back />
+                <StatusBar backgroundColor={colors.primary1} barStyle="light-content" />
+                <Titlebar title='Book an appointment' back onPress={() => this.backAction()} />
                 <ScrollView>
+                    <View style={styles.preview}>
+                        <DoctorPreview
+                            name={doctor.name} spec={doctor.speciality} loc={doctor.location.city + ', ' + doctor.location.country} hide />
+                    </View>
                     <TextInput
                         label='Full Name'
                         mode='flat'
@@ -119,9 +185,10 @@ class Book extends React.Component {
                             {displayDate}</Text>
                         <Text
                             style={{ ...styles.text2, color: this.state.dateSelected ? 'black' : colors.darkgray }}>
-                            12:40 PM</Text>
+                            {this.state.displayTime}</Text>
                         <CustomDatePicker callback={this.setDate.bind(this)} />
                     </View>
+                    {this.renderSlotView(tempSlots)}
                     <TextInput
                         label='Visit Reason'
                         mode='flat'
@@ -154,15 +221,31 @@ class Book extends React.Component {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: 'white'
+        backgroundColor: colors.bg
+    },
+    preview: {
+        marginStart: wp('4%'),
+        marginEnd: wp('4%'),
+        marginTop: hp('5%'),
+        borderRadius: 8,
+        borderWidth: 0.5,
+        borderColor: colors.primary2,
+    },
+    slots: {
+        paddingStart: wp('6%'),
+        marginTop: hp('3%')
     },
     date: {
+        backgroundColor: 'white',
         flexDirection: 'row',
         alignItems: 'center',
         justifyContent: 'space-between',
         marginTop: hp('2%'),
         marginStart: wp('10%'),
+        paddingStart: 10,
+        paddingEnd: 10,
         marginEnd: wp('10%'),
+        elevation: 0.4
     },
     searchbar: {
         marginStart: wp('10%'),

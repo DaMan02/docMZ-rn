@@ -10,6 +10,7 @@ import {
 // props: title, uri
 
 function renderAvail(props) {
+    if(props.hide) return;
     if (props.avail > 0) {
         return (
             <Text style={styles.avail}>available in {props.avail} min</Text>
@@ -50,6 +51,7 @@ const styles = StyleSheet.create({
         marginBottom: 4,
         flexDirection: 'row',
         backgroundColor: 'white',
+        borderRadius: 10
     },
     buttonContainer: {
         justifyContent: 'center',
