@@ -24,9 +24,9 @@ export default class CalendarView extends Component {
     }
 
     onDayPress = (day) => {
-        console.log(day.dateString)
+        // console.log(day)
         this.setState({ selected: day.dateString });
-        this.props.callback(day.dateString);
+        this.props.callback(day);
     }
 
     render() {

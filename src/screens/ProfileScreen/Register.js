@@ -98,7 +98,7 @@ class Register extends React.Component {
         return (
             <View style={styles.container}>
                 <LoginHeader title='Register with docMZ' />
-                <ChipGroup />
+                {/* <ChipGroup /> */}
                 <ScrollView>
                     <TextInput
                         label='Name'
@@ -106,7 +106,7 @@ class Register extends React.Component {
                         dense={true}
                         selectionColor={colors.primary1}
                         underlineColor={colors.shadow}
-                        style={{ ...styles.searchbar, marginTop: hp('2%') }}
+                        style={{ ...styles.searchbar, marginTop: hp('6%') }}
                         onChangeText={text => this.onChangeName(text)}
                         value={this.state.name}
                     />
@@ -199,8 +199,8 @@ const styles = StyleSheet.create({
         backgroundColor: 'white'
     },
     searchbar: {
-        marginStart: wp('6%'),
-        marginEnd: wp('6%'),
+        marginStart: wp('10%'),
+        marginEnd: wp('10%'),
         marginTop: hp('4%'),
         backgroundColor: 'white'
 

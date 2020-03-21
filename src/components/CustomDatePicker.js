@@ -17,6 +17,8 @@ export default class CustomDatePicker extends React.Component {
   _hideDialog = () => this.setState({ visible: false });
 
   setDate(date) {
+    // console.log('Picker.js')
+    // console.log(date)
     this.props.callback(date);
   }
 

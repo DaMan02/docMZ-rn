@@ -17,33 +17,37 @@ import * as Util from '../../utils/Util'
 import Titlebar from '../../components/Titlebar';
 import CustomDialog from '../../components/CustomDatePicker';
 import CustomDatePicker from '../../components/CustomDatePicker';
+import { format, compareAsc } from 'date-fns'
+import ResizableButton from '../../components/ResizableButton';
 
 class Book extends React.Component {
 
     state = {
         name: '',
-        email: '',
-        date: 'Pick a date',
-        dateSelected: false
+        contact: '',
+        date: '',
+        dateSelected: false,
+        reason: '',
+        notes: ''
     }
 
     onChangeName(text) {
         this.setState({ name: text })
     }
 
-    onChangePass(text) {
-        this.setState({ pass: text })
+    onChangeContact(text) {
+        this.setState({ contact: text })
     }
 
-    onChangePass2(text) {
-        this.setState({ pass2: text })
+    onChangeReason(text) {
+        this.setState({ reason: text })
     }
 
-    onChangeEmail(text) {
-        this.setState({ email: text })
+    onChangeNotes(text) {
+        this.setState({ notes: text })
     }
 
-    setDate(dateResult){
+    setDate(dateResult) {
         this.setState({
             dateSelected: true,
             date: dateResult
@@ -55,30 +59,36 @@ class Book extends React.Component {
     }
 
     onBook() {
-
         if (typeof this.state.name !== 'string' || this.state.name.length === 0) {
             this.toast('Please enter a valid name !')
             return
         }
-        if (!Util.validateEmail(this.state.email)) {
-            this.toast('Please enter a valid email !')
+        if (typeof this.state.contact !== 'string' || this.state.name.length < 6) {
+            this.toast('Please enter a valid number !')
             return
         }
-        if (!Util.validatePass(this.state.pass)) {
-            this.toast('Password must be atleast 4 characters long !')
+        if (this.state.reason.length === 0) {
+            this.toast('Please enter a reason !')
             return
         }
-        if (this.state.pass !== this.state.pass2) {
-            this.toast('Passwords do not match !')
+        if (!this.state.dateSelected) {
+            this.toast('Please pick a date !')
             return
         }
-        alert('Registered Successfully !')
+        alert('Booked Successfully !')
     }
 
     render() {
+        let date = this.state.date
+        let displayDate = 'Pick a date'
+        if (this.state.dateSelected) {
+            console.log(format(new Date(date.year, date.month - 1, date.day), 'MMM, dd'))
+            displayDate = format(new Date(date.year, date.month - 1, date.day), 'MMM, dd yyyy')
+        }
+
         return (
             <View style={styles.container}>
-                <StatusBar backgroundColor={colors.primary1} barStyle="light-content" />
+                <StatusBar backgroundColor='white' barStyle="dark-content" />
                 <Titlebar title='Book an appointment' back />
                 <ScrollView>
                     <TextInput
@@ -98,16 +108,42 @@ class Book extends React.Component {
                         dense={true}
                         selectionColor={colors.primary1}
                         underlineColor={colors.shadow}
-                        onChangeText={text => this.onChangeEmail(text)}
-                        value={this.state.email}
+                        onChangeText={text => this.onChangeContact(text)}
+                        value={this.state.contact}
                         keyboardType='number-pad'
                     />
                     <Text style={styles.text}>Date and time</Text>
                     <View style={styles.date}>
                         <Text
                             style={{ ...styles.text2, color: this.state.dateSelected ? 'black' : colors.darkgray }}>
-                            {this.state.date}</Text>
-                        <CustomDatePicker callback={this.setDate.bind(this)}/>
+                            {displayDate}</Text>
+                        <Text
+                            style={{ ...styles.text2, color: this.state.dateSelected ? 'black' : colors.darkgray }}>
+                            12:40 PM</Text>
+                        <CustomDatePicker callback={this.setDate.bind(this)} />
+                    </View>
+                    <TextInput
+                        label='Visit Reason'
+                        mode='flat'
+                        dense={true}
+                        selectionColor={colors.primary1}
+                        underlineColor={colors.shadow}
+                        style={{ ...styles.searchbar, marginTop: hp('4%') }}
+                        onChangeText={text => this.onChangeReason(text)}
+                        value={this.state.reason}
+                    />
+                    <TextInput
+                        label='Notes (optional)'
+                        mode='outlined'
+                        selectionColor={colors.primary1}
+                        underlineColor={colors.shadow}
+                        style={{ ...styles.searchbar, marginTop: hp('4%') }}
+                        onChangeText={text => this.onChangeNotes(text)}
+                        value={this.state.notes}
+                    />
+                    <View style={styles.btn}>
+                        <ResizableButton
+                            text='BOOK APPOINTMENT' onPress={() => this.onBook()} width={'80%'} height={46} />
                     </View>
                 </ScrollView>
             </View>
@@ -123,15 +159,16 @@ const styles = StyleSheet.create({
     date: {
         flexDirection: 'row',
         alignItems: 'center',
-        marginTop: hp('4%'),
-        marginStart: wp('6%')
+        justifyContent: 'space-between',
+        marginTop: hp('2%'),
+        marginStart: wp('10%'),
+        marginEnd: wp('10%'),
     },
     searchbar: {
-        marginStart: wp('6%'),
-        marginEnd: wp('6%'),
+        marginStart: wp('10%'),
+        marginEnd: wp('10%'),
         marginTop: hp('4%'),
         backgroundColor: 'white'
-
     },
     hint: {
         marginTop: 16,
@@ -141,16 +178,12 @@ const styles = StyleSheet.create({
     },
     btn: {
         padding: 16,
-        marginTop: 10,
-    },
-    login: {
-        ...fonts.para,
-        color: colors.link,
-        marginStart: 6
+        marginTop: hp('4%'),
+        marginBottom: hp('2%')
     },
     text: {
         ...fonts.h2,
-        marginStart: wp('6%'),
+        marginStart: wp('10%'),
         marginTop: hp('4%')
     },
     text2: {

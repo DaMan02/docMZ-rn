@@ -9,7 +9,7 @@ import {
     heightPercentageToDP as hp,
   } from 'react-native-responsive-screen';
 
-// props: title, subtitle, onPress
+// props: title, onPress
 
 const LoginHeader = (props) => (
     <View style={styles.curve}>
@@ -20,7 +20,7 @@ const LoginHeader = (props) => (
 
 const styles = StyleSheet.create({
     curve: {
-        height: hp('16%'),
+        height: hp('12%'),
         backgroundColor: colors.primary1,
         borderBottomEndRadius: 20,
         borderBottomStartRadius: 20,
@@ -30,7 +30,7 @@ const styles = StyleSheet.create({
         ...fonts.header,
         color: 'white',
         alignSelf: 'center',
-        padding: 40
+        padding: 30
     }
 });
 

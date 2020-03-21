@@ -11,7 +11,7 @@ const ResizableButton = (props) => (
         <TouchableOpacity activeOpacity={0.6} onPress={props.onPress}
             style={{...styles.buttonContainer, width:props.width, height: props.height }}>
             <View >
-                <Text style={{ ...fonts.para, color: 'white' }}>{props.text}</Text>
+                <Text style={{ ...fonts.para, color: 'white', textAlign: 'center' }}>{props.text}</Text>
             </View>
         </TouchableOpacity>
     </View>

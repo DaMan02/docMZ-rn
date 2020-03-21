@@ -31,11 +31,11 @@ class Login extends React.Component {
         this.setState({ email: text })
     }
 
-    chipToggle() {
-        this.setState({
-            isDoctor: !this.state.isDoctor
-        })
-    }
+    // chipToggle() {
+    //     this.setState({
+    //         isDoctor: !this.state.isDoctor
+    //     })
+    // }
 
     toast(msg) {
         ToastAndroid.show(msg, ToastAndroid.SHORT)
@@ -57,13 +57,13 @@ class Login extends React.Component {
         return (
             <View style={styles.container}>
                 <LoginHeader title='Login to your docMZ account' />
-                <ChipGroup
+                {/* <ChipGroup
                     onPress1={() => this.chipToggle()}
                     selected1={this.state.isDoctor}
                     onPress2={() => this.chipToggle()}
-                    selected2={!this.state.isDoctor} />
+                    selected2={!this.state.isDoctor} /> */}
                 <TextInput
-                    style={{ ...styles.searchbar, marginTop: hp('6%') }}
+                    style={{ ...styles.searchbar, marginTop: hp('10%') }}
                     label='E-mail'
                     mode='flat'
                     dense={true}
@@ -111,13 +111,13 @@ const styles = StyleSheet.create({
         backgroundColor: 'white'
     },
     searchbar: {
-        marginStart: wp('6%'),
-        marginEnd: wp('6%'),
+        marginStart: wp('10%'),
+        marginEnd: wp('10%'),
         marginTop: hp('4%'),
         backgroundColor: 'white'
     },
     hint: {
-        marginStart: wp('6%'),
+        marginStart: wp('10%'),
         alignSelf: 'flex-start',
         marginEnd: wp('6%'),
         marginBottom: hp('6%')
