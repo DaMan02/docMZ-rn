@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import Launch from './Launch';
 import DocPublicProf from './DocPublicProf';
 import DoctorSearch from './DoctorSearch';
 import ConsultOptions from './ConsultOptions';
@@ -9,6 +8,7 @@ import Visit from './Visit';
 import AllSpecialities from './AllSpecialities';
 import AllDoctors from './AllDoctors';
 import SignedOut from '../ProfileScreen/SignedOut';
+import Book from '../AppointmentsScreen/Book';
 
 const Stack = createStackNavigator();
 
@@ -30,6 +30,7 @@ class DoctorScreen extends Component {
                     <Stack.Screen name="AllSpecialities" component={AllSpecialities} />
                     <Stack.Screen name="AllDoctors" component={AllDoctors} />
                     <Stack.Screen name="SignedOut" component={SignedOut} />
+                    <Stack.Screen name="Book" component={Book} />
                 </Stack.Navigator>
             </NavigationContainer>
         );

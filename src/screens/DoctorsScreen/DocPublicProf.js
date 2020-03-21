@@ -30,8 +30,8 @@ class DocPublicProf extends React.Component {
     }
 
     nextScreen(navigation, doc) {
-        // doc.available_in_min == 0 ? navigation.navigate('Visit') : navigation.navigate('ConsultOptions')
-        navigation.navigate('SignedOut')
+        doc.available_in_min == 0 ? navigation.navigate('Visit') : navigation.navigate('Book')
+        // navigation.navigate('SignedOut')
     }
 
     renderBackgroundGradient() {
@@ -51,7 +51,7 @@ class DocPublicProf extends React.Component {
         // const  now  = this.props.consultNow;
         let avail = doc.available_in_min == 0;
 
-        let btnText = avail ? 'VISIT NOW' : 'CONSULT';
+        let btnText = avail ? 'VISIT NOW' : 'BOOK APPOINTMENT';
         let available = avail ? 'Available' : 'Available in ' + doc.available_in_min + ' min';
         return (
             <ScrollView style={styles.main} showsVerticalScrollIndicator={false}>
@@ -61,7 +61,7 @@ class DocPublicProf extends React.Component {
                         style={styles.image} />
                     <View style={styles.btn}>
                         <ResizableButton onPress={() => this.nextScreen(navigation, doc)}
-                            text={btnText} height={40} width={140}></ResizableButton>
+                            text={btnText} height={40} width={160}></ResizableButton>
                     </View>
                 </View>
                 <Text style={{ ...fonts.large, alignSelf: 'flex-start', marginStart: wp('10%'), marginTop: hp('2%') }}>Dr. {doc.name}</Text>

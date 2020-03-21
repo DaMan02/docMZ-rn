@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { StyleSheet, View, ScrollView, Text } from 'react-native';
 import { Calendar } from 'react-native-calendars';
 import fonts from '../assets/fonts';
+import colors from '../assets/colors';
 import { heightPercentageToDP, widthPercentageToDP } from 'react-native-responsive-screen';
 
 function getTodayString() {
@@ -13,18 +14,19 @@ function getTodayString() {
     return today;
 }
 
-
 export default class CalendarView extends Component {
     constructor(props) {
         super(props);
 
         this.state = {
-            selected: getTodayString()
+            selected: null
         };
     }
 
     onDayPress = (day) => {
+        console.log(day.dateString)
         this.setState({ selected: day.dateString });
+        this.props.callback(day.dateString);
     }
 
     render() {
@@ -51,7 +53,7 @@ export default class CalendarView extends Component {
     }
 }
 
-const colors = {
+const colorsList = {
     main: '#00A3B4',
     dark: '#007A9B',
     today: '#CF8700'
@@ -59,20 +61,13 @@ const colors = {
 
 const styles = StyleSheet.create({
     container: {
-        marginTop: heightPercentageToDP('2%'),
-        marginEnd: widthPercentageToDP('2%'),
-        marginStart: widthPercentageToDP('2%'),
     },
     calendar: {
-        marginBottom: 8,
+        // marginBottom: 8,
     },
     text: {
-        ...fonts.h1,
-        textAlign: 'center',
-        padding: 8,
-        color: 'white',
-        borderRadius: 14,
-        backgroundColor: colors.main,
+        ...fonts.large,
+        alignSelf: 'flex-start',
     }
 });
 
@@ -90,17 +85,17 @@ const calTheme = {
      }, */
     backgroundColor: 'white',
     calendarBackground: 'white',
-    textSectionTitleColor: colors.main,
-    selectedDayBackgroundColor: colors.main,
+    textSectionTitleColor: colorsList.main,
+    selectedDayBackgroundColor: colorsList.main,
     selectedDayTextColor: '#ffffff',
-    todayTextColor: colors.today,
+    todayTextColor: colorsList.today,
     dayTextColor: '#2d4150',
     textDisabledColor: '#d9e1e8',
     dotColor: '#00adf5',
     selectedDotColor: '#ffffff',
-    arrowColor: 'orange',
+    arrowColor: colors.button,
     disabledArrowColor: '#d9e1e8',
-    monthTextColor: colors.dark,
+    monthTextColor: colorsList.dark,
     // indicatorColor: 'blue',
     textDayFontFamily: 'balooThambi2_Regular',
     textMonthFontFamily: 'balooThambi2_Medium',

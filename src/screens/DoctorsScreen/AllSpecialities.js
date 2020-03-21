@@ -22,7 +22,7 @@ import Speciality from '../../components/Speciality';
 import specs from '../../database/specialityDemo.json'
 import Searchbar from '../../components/Searchbar';
 import Titlebar from '../../components/Titlebar';
-import { ScrollPager } from 'react-native-tab-view';
+import { connect } from 'react-redux';
 
 class AllSpecialities extends Component {
     state = {
@@ -80,10 +80,15 @@ class AllSpecialities extends Component {
     this.setState({ specialityList: data });
   }
 
+  onSpecialityClick(sp){
+    this.props.searchUpdateSp(sp.name)
+    this.props.navigation.navigate('AllDoctors', { docType: sp.name })
+  }
+
     renderGrid(item) {
         return (
             <View style={styles.item}>
-                <Speciality onPress={() => console.log('click')}
+                <Speciality onPress={() => this.onSpecialityClick(item)}
                     title={item.name} uri={require('../../assets/images/stetho.png')} />
             </View>
         );
@@ -108,7 +113,7 @@ class AllSpecialities extends Component {
                 onStartShouldSetResponderCapture={() => { this.setState({ enableScrollViewScroll: true }); }}
                 style={styles.container}>
                 <StatusBar backgroundColor={colors.primary1} barStyle="light-content" />
-                <Titlebar title='All Specialities' />
+                <Titlebar title='All Specialities' back onPress={() => this.backAction()}/>
                 <Searchbar onChangeText={(text) => this.onChangeText(text)} onSearch={() => this.goClick()}
                     hint='Search Specialities' />
                 <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}
@@ -158,5 +163,10 @@ const styles = StyleSheet.create({
         alignItems: 'center',
     },
 });
-
-export default AllSpecialities;
+  
+const mapDispatchToProps = dispatch => ({
+    searchUpdateSp: val => dispatch({ type: 'UPDATE_SEARCH_SP', searchSp: val }),
+  });
+  
+export default connect(null, mapDispatchToProps)(AllSpecialities);
+  

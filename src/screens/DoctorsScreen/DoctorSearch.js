@@ -111,13 +111,18 @@ async handleSearch(text) {
 
 // end search
 
+onSpecialityClick(sp){
+  this.props.searchUpdateSp(sp.name)
+  this.props.navigation.navigate('AllDoctors', { docType: sp.name })
+}
+
 render() {
   return (
     <View
       onStartShouldSetResponderCapture={() => { this.setState({ enableScrollViewScroll: true }); }}
       style={styles.container}>
       <StatusBar backgroundColor={colors.primary1} barStyle="light-content" />
-      <Titlebar title='DocMz' />
+      <Titlebar title='Find a doctor' />
       {/* {this.renderProgress()} */}
       <Searchbar onChangeText={(text) => this.onChangeText(text)} onSearch={() => this.goClick()}
         hint='Search doctors, specialities' />
@@ -132,7 +137,7 @@ render() {
             {this.state.specialityList.length > 0 ? (
               this.state.specialityList.slice(0, 6).map(sp => {
                 return (
-                  <Speciality onPress={() => console.log('click')}
+                  <Speciality onPress={() => this.onSpecialityClick(sp)}
                     title={sp.name} uri={require('../../assets/images/stetho.png')} />
                 );
               })
@@ -258,11 +263,13 @@ const styles = StyleSheet.create({
 
 const mapStateToProps = state => ({
   searchDoc: state.searchDoc,
+  // searchSp: state.searchSp
   // loadDoc: state.loadDoc
 });
 
 const mapDispatchToProps = dispatch => ({
   searchUpdateDoc: val => dispatch({ type: 'UPDATE_SEARCH_DOC', searchDoc: val }),
+  searchUpdateSp: val => dispatch({ type: 'UPDATE_SEARCH_SP', searchSp: val }),
   // loadUpdateDoc: val => dispatch({ type: 'LOAD_DOC', loadDoc: val })
 });
 

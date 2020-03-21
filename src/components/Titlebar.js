@@ -11,9 +11,9 @@ import Icon from 'react-native-vector-icons/MaterialCommunityIcons'
 
 const Titlebar = (props) => (
     <View style={styles.head}>
-        <TouchableOpacity><Icon name="menu" size={30} color='#464646' /></TouchableOpacity>
+        <TouchableOpacity style={{padding: 4}} onPress={props.onPress}><Icon name={props.back ? 'arrow-left' : 'menu'} size={26} color='#464646' /></TouchableOpacity>
         <Text style={{ ...fonts.h3, fontSize: 22, marginStart: widthPercentageToDP('6%'), textAlign: 'center' }}>{props.title}</Text>
-        <TouchableOpacity><Icon name="filter-outline" size={30} color='#464646' /></TouchableOpacity>
+        {/* <TouchableOpacity><Icon name="filter-outline" size={30} color='#464646' /></TouchableOpacity> */}
     </View>
 );
 
@@ -21,7 +21,7 @@ const styles = StyleSheet.create({
     head: {
         flexDirection: 'row',
         alignItems: 'center',
-        justifyContent: 'space-between',
+        // justifyContent: 'space-between',
         marginTop: heightPercentageToDP('2%'),
         marginStart: 12,
         marginEnd: 12

@@ -10,6 +10,7 @@ import {
   StatusBar,
   FlatList
 } from 'react-native';
+import { connect } from 'react-redux';
 import {
   widthPercentageToDP as wp,
   heightPercentageToDP as hp,
@@ -32,10 +33,11 @@ class AllDoctors extends Component {
     doctorsList: [],
     specialityList: [],
     isLoading: true,
-    search: ''
+    // searchSp: false
   };
 
   backAction = () => {
+    this.props.searchUpdateSp('')
     this.props.navigation.goBack()
     return true;
   };
@@ -46,13 +48,26 @@ class AllDoctors extends Component {
 
   async componentDidMount() {
     BackHandler.addEventListener("hardwareBackPress", this.backAction);
+    let that = this
     try {
       // let doctorList = await Axios.post(Api.doctors + Api.getDoctors);
       // let doctorsList = docs.doctor_details;
-      this.setState({
-        doctorsList: docs.doctor_details,
-        isLoading: false,
-      });
+      if (that.props.searchSp !== '') {
+        console.log(that.props.searchSp)
+        let data = await docs.doctor_details;
+        data = data.filter(function (d) {
+          return ( 
+            d.speciality.toLowerCase().match(that.props.searchSp.toLowerCase())
+          );
+        });
+        this.setState({ doctorsList: data });
+      } else {
+        this.setState({
+          doctorsList: docs.doctor_details,
+          isLoading: false,
+        });
+      }
+
     } catch (error) {
       console.log(error);
       this.setState({ isLoading: false });
@@ -61,7 +76,6 @@ class AllDoctors extends Component {
   }
 
   // search 
-
   onChangeText(text) {
     this.setState({ search: text })
     if (text == '') {
@@ -111,18 +125,20 @@ class AllDoctors extends Component {
 
   render() {
     const { docType } = this.props.route.params;
+    // if(docType !== 'All Doctors' && docType !== 'All Specialties')
+    //    this.setState({ searchSp: true })
     return (
       <View
         onStartShouldSetResponderCapture={() => { this.setState({ enableScrollViewScroll: true }); }}
         style={styles.container}>
         <StatusBar backgroundColor={colors.primary1} barStyle="light-content" />
-        <Titlebar title={docType} />
+        <Titlebar title={docType} back onPress={() => this.backAction()}/>
         <Searchbar onChangeText={(text) => this.onChangeText(text)} onSearch={() => this.goClick()}
           hint='Search by name, speciality, city' />
         <FlatList style={styles.list}
           data={this.state.doctorsList}
           showsVerticalScrollIndicator={false}
-          renderItem={({ item }) => this.renderList(item)}
+          renderItem={({ item }) => this.renderList(item, docType)}
           keyExtractor={item => item.id}
           // Performance settings
           removeClippedSubviews={true} // Unmount components when outside of window 
@@ -158,4 +174,12 @@ const styles = StyleSheet.create({
   },
 });
 
-export default AllDoctors;
+const mapStateToProps = state => ({
+  searchSp: state.searchSp
+});
+
+const mapDispatchToProps = dispatch => ({
+  searchUpdateSp: val => dispatch({ type: 'UPDATE_SEARCH_SP', searchSp: val }),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(AllDoctors);
