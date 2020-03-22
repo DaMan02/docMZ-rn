@@ -6,13 +6,15 @@ import AccountDetails from './AccountDetails';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import SettingsScreen from '../SettingsScreen';
+import AddCards from '../AddCards';
 
 const Stack = createStackNavigator();
 
 class ProfileScreen extends React.Component {
     render() {
         return (
-               <SignedOut/>
+            <AddCards/>
+            //    <SignedOut/>
             // <NavigationContainer independent={true}>
             //     <Stack.Navigator
             //         initialRouteName='ProfileMain'
