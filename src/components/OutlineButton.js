@@ -7,13 +7,13 @@ import {
     heightPercentageToDP as hp,
 } from 'react-native-responsive-screen';
 
-// props: text, tColor
+// props: text, tColor, w, h
 
 const OutlineButton = (props) => (
     <View  
     style={styles.main}>
     <TouchableOpacity activeOpacity={0.6} onPress={props.onPress}
-     style={{...styles.buttonContainer, borderColor: props.tColor}}>
+     style={{...styles.buttonContainer, width: props.w, height: props.h, borderColor: props.tColor}}>
         <View >
             <Text style={{ ...fonts.h2, color: props.tColor}}>{props.text}</Text>
         </View>

@@ -16,6 +16,7 @@ import { format, compareAsc } from 'date-fns'
 import ResizableButton from '../../components/ResizableButton';
 import DoctorPreview from '../../components/DoctorPreview';
 import TimeSlot from '../../components/TimeSlot';
+import CustomAlert from '../../components/CustomAlert';
 
 class Book extends React.Component {
 
@@ -26,7 +27,8 @@ class Book extends React.Component {
         dateSelected: false,
         displayTime: '',
         reason: '',
-        notes: ''
+        notes: '',
+        showdialog: false
     }
 
     backAction = () => {
@@ -74,7 +76,7 @@ class Book extends React.Component {
             this.toast('Please enter a valid name !')
             return
         }
-        if (typeof this.state.contact !== 'string' || this.state.name.length < 6) {
+        if (this.state.contact.length < 6 || this.state.contact.length > 12) {
             this.toast('Please enter a valid number !')
             return
         }
@@ -86,12 +88,12 @@ class Book extends React.Component {
             this.toast('Please pick a date !')
             return
         }
-        alert('Booked Successfully !')
+        this.setState({ showdialog: true })
     }
 
     renderSlots = (slot) => {
         return (
-            <TimeSlot time={slot.time} onPress={() => this.setState({ displayTime: slot.time })}/>
+            <TimeSlot time={slot.time} onPress={() => this.setState({ displayTime: slot.time })} />
         )
     }
 
@@ -118,6 +120,7 @@ class Book extends React.Component {
             console.log(format(new Date(date.year, date.month - 1, date.day), 'MMM, dd'))
             displayDate = format(new Date(date.year, date.month - 1, date.day), 'MMM, dd yyyy')
         }
+        const dialogMsg = 'Your appointment has been booked for ' + displayDate + ' at ' + this.state.displayTime + ' with Dr. ' + doctor.name;
 
         let tempSlots = {
             timings: [
@@ -208,6 +211,11 @@ class Book extends React.Component {
                         onChangeText={text => this.onChangeNotes(text)}
                         value={this.state.notes}
                     />
+                    <CustomAlert
+                        title='Appointment Booked !' titleColor={colors.greenblue}
+                        msg={dialogMsg}
+                        visible={this.state.showdialog}
+                        callback={() => this.setState({ showdialog: false })} />
                     <View style={styles.btn}>
                         <ResizableButton
                             text='BOOK APPOINTMENT' onPress={() => this.onBook()} width={'80%'} height={46} />
