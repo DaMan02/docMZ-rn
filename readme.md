@@ -12,3 +12,7 @@
 3. `cd android && gradlew assembleDebug`
 
 Locate apk file: ...\android\app\build\outputs\apk\debug
+
+# Screenshots
+
+https://drive.google.com/open?id=1IjuhefbWtjjHtMQbJVkw7g1-SSbNGoJO 
